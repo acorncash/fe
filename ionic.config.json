@@ -1,0 +1,7 @@
+{
+  "name": "dotori-app",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}

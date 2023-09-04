@@ -1,0 +1,26 @@
+<ion-header [translucent]="true">
+  <ion-toolbar style="--background:#fff; --border-width: 0;">
+    <ion-buttons slot="start">
+      <ion-back-button text=""></ion-back-button>
+    </ion-buttons>
+    <ion-title>출금 내역</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <div style="padding: 40px 20px">
+    <div class="item" *ngFor="let number of [0,1,2,3,4]" style="margin-bottom: 32px;">
+      <div style="display: flex; justify-content: space-between;">
+        <span style="font-size: 14px; font-weight: bold; color: #292B2C;">
+          {{number+1}}회차 출금
+        </span>
+        <span style="font-size: 14px; font-weight: bold; color: #F16C1E;">
+          00,000원
+        </span>
+      </div>
+      <span style="font-size: 14px; color: #7F818B;">
+        2023.08.30 21:17
+      </span>
+    </div>
+  </div>
+</ion-content>

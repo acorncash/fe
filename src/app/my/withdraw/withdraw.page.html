@@ -1,0 +1,54 @@
+<ion-header [translucent]="true">
+  <ion-toolbar style="--background:#fff; --border-width: 0;">
+    <ion-buttons slot="start">
+      <ion-back-button text=""></ion-back-button>
+    </ion-buttons>
+    <ion-title>출금 신청</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <div style="padding: 10px 20px">
+    <img src="../../assets/icon/dotori_icon.svg"/>
+    <span style="font-size:24px; color:#F16C1E; font-weight: bold;">
+      1,400
+    </span>
+
+    <div style="height: 20px;"></div>
+
+    <div class="item" style="margin-bottom: 16px;">
+      <p style="margin: 0 0 8px 0; font-size: 14px;">
+        출금액
+      </p>
+      <ion-input fill="outline" [maxlength]="8" style="border: 1px solid #000; border-radius: 10px;
+      --padding-bottom: 10px; --padding-end: 10px; --padding-start: 10px; --padding-top: 10px; font-size: 16px;">
+      </ion-input>
+    </div>
+
+    <div class="item" style="margin-bottom: 16px;">
+      <p style="margin: 0 0 8px 0; font-size: 14px;">
+        입금 계좌번호
+      </p>
+      <ion-input fill="outline" [maxlength]="20" style="border: 1px solid #000; border-radius: 10px;
+      --padding-bottom: 10px; --padding-end: 10px; --padding-start: 10px; --padding-top: 10px; font-size: 16px;">
+      </ion-input>
+    </div>
+
+    <div class="item" style="margin-bottom: 16px;">
+      <p style="margin: 0 0 8px 0; font-size: 14px;">
+        계좌 명의자 성명
+      </p>
+      <ion-input fill="outline" style="border: 1px solid #000; border-radius: 10px;
+      --padding-bottom: 10px; --padding-end: 10px; --padding-start: 10px; --padding-top: 10px; font-size: 16px;">
+      </ion-input>
+    </div>
+  </div>
+</ion-content>
+
+<ion-footer>
+  <div style="padding: 10px 20px;">
+    <ion-button expand="block" style="height: 56px; font-size: 20px; font-weight: bold; border-radius: 10px; --background: linear-gradient(180deg, #FF9040 0%, #F16C1E 100%); --background-activated: #F16C1E">
+      출금 신청하기
+    </ion-button>
+  </div>
+</ion-footer>

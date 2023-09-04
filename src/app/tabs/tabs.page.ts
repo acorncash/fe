@@ -6,7 +6,10 @@ import { Component } from '@angular/core';
   styleUrls: ['tabs.page.scss']
 })
 export class TabsPage {
-
+  activeTab:string = "tab1";
   constructor() {}
-
+  
+  chagedTab(name:string){
+    this.activeTab = name;
+   }
 }

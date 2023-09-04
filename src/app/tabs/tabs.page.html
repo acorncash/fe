@@ -1,19 +1,34 @@
 <ion-tabs>
 
-  <ion-tab-bar slot="bottom">
-    <ion-tab-button tab="tab1">
-      <ion-icon aria-hidden="true" name="triangle"></ion-icon>
-      <ion-label>Tab 1</ion-label>
+  <ion-tab-bar slot="bottom" style="--background:white; border:none; padding: 6px;">
+    <ion-tab-button tab="tab1" (click)="chagedTab('tab1')">
+      <ion-icon *ngIf="activeTab == 'tab1'" src="../../assets/icon/home.svg"></ion-icon>
+      <ion-icon *ngIf="activeTab != 'tab1'" src="../../assets/icon/home_gray.svg"></ion-icon>
+      <ion-label>홈</ion-label>
     </ion-tab-button>
 
-    <ion-tab-button tab="tab2">
-      <ion-icon aria-hidden="true" name="ellipse"></ion-icon>
-      <ion-label>Tab 2</ion-label>
+    <ion-tab-button tab="tab2" (click)="chagedTab('tab2')">
+      <ion-icon *ngIf="activeTab == 'tab2'" src="../../assets/icon/dotori.svg"></ion-icon>
+      <ion-icon *ngIf="activeTab != 'tab2'" src="../../assets/icon/dotori_gray.svg"></ion-icon>
+      <ion-label>미션</ion-label>
     </ion-tab-button>
 
-    <ion-tab-button tab="tab3">
-      <ion-icon aria-hidden="true" name="square"></ion-icon>
-      <ion-label>Tab 3</ion-label>
+    <ion-tab-button tab="tab3" (click)="chagedTab('tab3')">
+      <ion-icon *ngIf="activeTab == 'tab3'" src="../../assets/icon/note.svg"></ion-icon>
+      <ion-icon *ngIf="activeTab != 'tab3'" src="../../assets/icon/note_gray.svg"></ion-icon>
+      <ion-label>제휴 미션</ion-label>
+    </ion-tab-button>
+
+    <ion-tab-button tab="tab4" (click)="chagedTab('tab4')">
+      <ion-icon *ngIf="activeTab == 'tab4'" src="../../assets/icon/gift.svg"></ion-icon>
+      <ion-icon *ngIf="activeTab != 'tab4'" src="../../assets/icon/gift_gray.svg"></ion-icon>
+      <ion-label>교환권</ion-label>
+    </ion-tab-button>
+
+    <ion-tab-button tab="tab5" (click)="chagedTab('tab5')">
+      <ion-icon *ngIf="activeTab == 'tab5'" src="../../assets/icon/my.svg"></ion-icon>
+      <ion-icon *ngIf="activeTab != 'tab5'" src="../../assets/icon/my_gray.svg"></ion-icon>
+      <ion-label>My</ion-label>
     </ion-tab-button>
   </ion-tab-bar>
 

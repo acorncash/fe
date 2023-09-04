@@ -1,0 +1,110 @@
+<ion-header [translucent]="true">
+  <ion-toolbar style="--background:#fff; --border-width: 0;">
+    <ion-title>
+      모바일 교환권
+    </ion-title>
+  </ion-toolbar>
+
+  <ion-toolbar style="--background:#fff; --border-width: 0;">
+    <div style="width: 100%; background: #F6F6F6; padding: 8px 16px;">
+      <span (click)="clickMenu('cafe')" style="font-weight: bold; font-size: 18px; margin-right: 12px;"
+      [ngClass]="selectedMenu == 'cafe' ? 'orange' : 'gray'">
+        카페
+      </span>
+      <span (click)="clickMenu('eatOut')" style="font-weight: bold; font-size: 18px; margin-right: 12px;"
+      [ngClass]="selectedMenu == 'eatOut' ? 'orange' : 'gray'">
+        외식
+      </span>
+      <span (click)="clickMenu('store')" style="font-weight: bold; font-size: 18px; margin-right: 12px;"
+      [ngClass]="selectedMenu == 'store' ? 'orange' : 'gray'">
+        편의점
+      </span>
+      <span (click)="clickMenu('culture')" style="font-weight: bold; font-size: 18px;"
+      [ngClass]="selectedMenu == 'culture' ? 'orange' : 'gray'">
+        문화생활
+      </span>
+    </div>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <div *ngIf="selectedMenu == 'cafe'">
+    <div style="padding: 24px 24px;">
+      <div *ngFor="let number of [0,1,2,3,4]" style="display: flex; margin-bottom: 32px;" routerLink="../../coupon-detail">
+        <div style="width: 90px; height: 90px; border-radius: 10px; background: #B6B3B3;">
+        </div>
+        <div style="padding-left: 20px; font-size: 14px; color: #7F818B; padding: 8px 20px;">
+          <p style="margin: 0; margin-bottom: 8px;">
+            스타벅스
+          </p>
+          <p style="margin: 0; font-weight: bold; margin-bottom: 8px; color: #1C1C1D;">
+            블랙핑크 스트로베리 쉐이크
+          </p>
+          <p style="margin: 0; color: #F16C1E; font-weight: bold;">
+            00,000 도토리
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div *ngIf="selectedMenu == 'eatOut'">
+    <div style="padding: 24px 24px;">
+      <div *ngFor="let number of [0,1,2,3,4]" style="display: flex; margin-bottom: 32px;" routerLink="../../coupon-detail">
+        <div style="width: 90px; height: 90px; border-radius: 10px; background: #B6B3B3;">
+        </div>
+        <div style="padding-left: 20px; font-size: 14px; color: #7F818B; padding: 8px 20px;">
+          <p style="margin: 0; margin-bottom: 8px;">
+            스타벅스
+          </p>
+          <p style="margin: 0; font-weight: bold; margin-bottom: 8px; color: #1C1C1D;">
+            블랙핑크 스트로베리 쉐이크
+          </p>
+          <p style="margin: 0; color: #F16C1E; font-weight: bold;">
+            00,000 도토리
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div *ngIf="selectedMenu == 'store'">
+    <div style="padding: 24px 24px;">
+      <div *ngFor="let number of [0,1,2,3,4]" style="display: flex; margin-bottom: 32px;" routerLink="../../coupon-detail">
+        <div style="width: 90px; height: 90px; border-radius: 10px; background: #B6B3B3;">
+        </div>
+        <div style="padding-left: 20px; font-size: 14px; color: #7F818B; padding: 8px 20px;">
+          <p style="margin: 0; margin-bottom: 8px;">
+            스타벅스
+          </p>
+          <p style="margin: 0; font-weight: bold; margin-bottom: 8px; color: #1C1C1D;">
+            블랙핑크 스트로베리 쉐이크
+          </p>
+          <p style="margin: 0; color: #F16C1E; font-weight: bold;">
+            00,000 도토리
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div *ngIf="selectedMenu == 'culture'">
+    <div style="padding: 24px 24px;">
+      <div *ngFor="let number of [0,1,2,3,4]" style="display: flex; margin-bottom: 32px;" routerLink="../../coupon-detail">
+        <div style="width: 90px; height: 90px; border-radius: 10px; background: #B6B3B3;">
+        </div>
+        <div style="padding-left: 20px; font-size: 14px; color: #7F818B; padding: 8px 20px;">
+          <p style="margin: 0; margin-bottom: 8px;">
+            스타벅스
+          </p>
+          <p style="margin: 0; font-weight: bold; margin-bottom: 8px; color: #1C1C1D;">
+            블랙핑크 스트로베리 쉐이크
+          </p>
+          <p style="margin: 0; color: #F16C1E; font-weight: bold;">
+            00,000 도토리
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</ion-content>

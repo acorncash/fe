@@ -1,17 +1,31 @@
 <ion-header [translucent]="true">
-  <ion-toolbar>
+  <ion-toolbar style="--background:#fff; --border-width: 0;">
     <ion-title>
-      Tab 3
+      제휴 미션
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Tab 3</ion-title>
-    </ion-toolbar>
-  </ion-header>
-
-  <app-explore-container name="Tab 3 page"></app-explore-container>
+  <div style="padding: 0px 24px;">
+    <p style="font-size: 14px; margin-bottom: 24px;">
+      전체 미션 00개
+    </p>
+    
+    <div *ngFor="let number of [0,1,2,3,4]" style="display: flex; margin-bottom: 32px;" routerLink="../../prs-detail">
+      <div style="width: 90px; height: 90px; border-radius: 10px; background: #B6B3B3;">
+      </div>
+      <div style="padding-left: 20px; font-size: 14px; color: #7F818B; padding: 8px 20px;">
+        <p style="margin: 0; font-weight: bold; margin-bottom: 8px; color: #1C1C1D;">
+          Title
+        </p>
+        <p style="margin: 0; margin-bottom: 8px;">
+          Lorem ipsum dolor sit amet..
+        </p>
+        <p style="margin: 0; color: #F16C1E; font-weight: bold;">
+          0,000 도토리 적립
+        </p>
+      </div>
+    </div>
+  </div>
 </ion-content>

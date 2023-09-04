@@ -1,17 +1,87 @@
 <ion-header [translucent]="true">
-  <ion-toolbar>
+  <ion-toolbar style="--background:#fff; --border-width: 0;">
+    <ion-buttons slot="start">
+      <img style="margin-right: 4px;" src="../../assets/icon/dotori_icon.svg"/>
+      <span style="font-size:16px; color:#F16C1E; font-weight: bold;">
+        1,400
+      </span>
+    </ion-buttons>
     <ion-title>
-      Tab 1
+      <img src="../../assets/icon/dotori_cash.svg"/>
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Tab 1</ion-title>
-    </ion-toolbar>
-  </ion-header>
+  <div class="slider">
+    <div class="slide" id="slide-1">
+      <img src="../../assets/image/banner1.png"/>
+    </div>
+    <div class="slide" id="slide-2">
+      <img src="../../assets/image/banner2.png"/>
+    </div>
+    <div class="slide" id="slide-3">
+      <img src="../../assets/image/banner3.png"/>
+    </div>
+  </div>
 
-  <app-explore-container name="Tab 1 page"></app-explore-container>
+  <div style="margin:2cqb 24px 40px 24px">
+    <div style="display: flex; margin-bottom: 24px;">
+      <span style="font-size: 18px; font-weight: bold;">
+        진행중인 미션
+      </span>
+      <!-- <span style="margin-left: auto; font-size: 14px; color: #B6B3B3;" routerLink="../tab2">
+        더보기
+      </span> -->
+    </div>
+    
+    <div style="margin-top: 2px; display: inline-flex; flex-direction: column; align-items: flex-start; gap: 24px;" >
+      <div style="display: flex; align-items: flex-start; gap: 13px; overflow-x: auto;">
+        <div *ngFor="let number of [0,1,2,3,4]" routerLink="../../mision-detail">
+          <div style="width:140px; height: 100px; background: #F5B700; border-radius: 10px;"></div>
+          <p style="font-size: 14px; color: #292B2C; font-weight: bold; margin-bottom: 0;">
+            GS25 퀴즈
+          </p>
+          <span style="font-size: 14px; color: #7F818B; margin-right: 6px;">
+            D-3
+          </span>
+          <img src="../../assets/icon/people.svg"/>
+          <span style="font-size: 14px; color: #7F818B;">
+            100
+          </span>
+          <p style="font-size: 12px; color: #F16C1E; font-weight: bold; margin-top: 8px;">
+            500 도토리 적립
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div style="height: 48px;"></div>
+
+    <div style="display: flex; margin-bottom: 24px;">
+      <span style="font-size: 18px; font-weight: bold;">
+        모바일 교환권
+      </span>
+      <!-- <span style="margin-left: auto; font-size: 14px; color: #B6B3B3;" routerLink="../tab4">
+        더보기
+      </span> -->
+    </div>
+
+    <div style="margin-top: 2px; display: inline-flex; flex-direction: column; align-items: flex-start; gap: 24px;" >
+      <div style="display: flex; align-items: flex-start; gap: 13px;">
+        <div *ngFor="let number of [0,1,2,3,4]" routerLink="../../coupon-detail">
+          <div style="width:140px; height: 100px; background: #CAE7E2; border-radius: 10px;"></div>
+          <span style="font-size: 14px; color: #7F818B;">
+            스타벅스
+          </span>
+          <span class="ellipsis" style="font-size: 14px; color: #292B2C; font-weight: bold; margin: 0;">
+            자몽허니블랙티&가나슈
+          </span>
+          <span style="font-size: 12px; color: #F16C1E; font-weight: bold;">
+            11,500 도토리
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
 </ion-content>

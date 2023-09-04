@@ -30,7 +30,7 @@
 <ion-content [fullscreen]="true">
   <div *ngIf="selectedMenu == 'cafe'">
     <div style="padding: 24px 24px;">
-      <div *ngFor="let number of [0,1,2,3,4]" style="display: flex; margin-bottom: 32px;" routerLink="../../coupon-detail">
+      <div *ngFor="let number of [0,1,2,3,4]" style="display: flex; margin-bottom: 32px;" (click)="navDetail(number)">
         <div style="width: 90px; height: 90px; border-radius: 10px; background: #B6B3B3;">
         </div>
         <div style="padding-left: 20px; font-size: 14px; color: #7F818B; padding: 8px 20px;">
@@ -50,7 +50,7 @@
 
   <div *ngIf="selectedMenu == 'eatOut'">
     <div style="padding: 24px 24px;">
-      <div *ngFor="let number of [0,1,2,3,4]" style="display: flex; margin-bottom: 32px;" routerLink="../../coupon-detail">
+      <div *ngFor="let number of [0,1,2,3,4]" style="display: flex; margin-bottom: 32px;" (click)="navDetail(number)">
         <div style="width: 90px; height: 90px; border-radius: 10px; background: #B6B3B3;">
         </div>
         <div style="padding-left: 20px; font-size: 14px; color: #7F818B; padding: 8px 20px;">
@@ -70,7 +70,7 @@
 
   <div *ngIf="selectedMenu == 'store'">
     <div style="padding: 24px 24px;">
-      <div *ngFor="let number of [0,1,2,3,4]" style="display: flex; margin-bottom: 32px;" routerLink="../../coupon-detail">
+      <div *ngFor="let number of [0,1,2,3,4]" style="display: flex; margin-bottom: 32px;" (click)="navDetail(number)">
         <div style="width: 90px; height: 90px; border-radius: 10px; background: #B6B3B3;">
         </div>
         <div style="padding-left: 20px; font-size: 14px; color: #7F818B; padding: 8px 20px;">
@@ -90,7 +90,7 @@
 
   <div *ngIf="selectedMenu == 'culture'">
     <div style="padding: 24px 24px;">
-      <div *ngFor="let number of [0,1,2,3,4]" style="display: flex; margin-bottom: 32px;" routerLink="../../coupon-detail">
+      <div *ngFor="let number of [0,1,2,3,4]" style="display: flex; margin-bottom: 32px;" (click)="navDetail(number)">
         <div style="width: 90px; height: 90px; border-radius: 10px; background: #B6B3B3;">
         </div>
         <div style="padding-left: 20px; font-size: 14px; color: #7F818B; padding: 8px 20px;">

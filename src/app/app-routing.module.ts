@@ -11,11 +11,11 @@ const routes: Routes = [
     loadChildren: () => import('./mision/detail/detail.module').then( m => m.DetailPageModule)
   },
   {
-    path: 'prs-detail',
+    path: 'prs-detail/:seq',
     loadChildren: () => import('./mision/prs-detail/prs-detail.module').then( m => m.PrsDetailPageModule)
   },
   {
-    path: 'coupon-detail',
+    path: 'coupon-detail/:seq',
     loadChildren: () => import('./coupon/detail/detail.module').then( m => m.DetailPageModule)
   },
   {

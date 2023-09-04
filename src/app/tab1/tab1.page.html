@@ -25,7 +25,7 @@
     </div>
   </div>
 
-  <div style="margin:2cqb 24px 40px 24px">
+  <div style="margin:32px 24px 84px 24px">
     <div style="display: flex; margin-bottom: 24px;">
       <span style="font-size: 18px; font-weight: bold;">
         진행중인 미션
@@ -37,7 +37,7 @@
     
     <div style="margin-top: 2px; display: inline-flex; flex-direction: column; align-items: flex-start; gap: 24px;" >
       <div style="display: flex; align-items: flex-start; gap: 13px; overflow-x: auto;">
-        <div *ngFor="let number of [0,1,2,3,4]" routerLink="../../mision-detail">
+        <div *ngFor="let number of [0,1,2,3,4]" (click)="navMisionDetail(number)">
           <div style="width:140px; height: 100px; background: #F5B700; border-radius: 10px;"></div>
           <p style="font-size: 14px; color: #292B2C; font-weight: bold; margin-bottom: 0;">
             GS25 퀴즈
@@ -69,7 +69,7 @@
 
     <div style="margin-top: 2px; display: inline-flex; flex-direction: column; align-items: flex-start; gap: 24px;" >
       <div style="display: flex; align-items: flex-start; gap: 13px;">
-        <div *ngFor="let number of [0,1,2,3,4]" routerLink="../../coupon-detail">
+        <div *ngFor="let number of [0,1,2,3,4]" (click)="navCouponDetail(number)">
           <div style="width:140px; height: 100px; background: #CAE7E2; border-radius: 10px;"></div>
           <span style="font-size: 14px; color: #7F818B;">
             스타벅스

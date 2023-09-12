@@ -4,3 +4,12 @@
 .gray {
     color:#B6B3B3;
 }
+
+.ellipsis {
+    // width: calc(100% - 158px);
+    width: 200px;
+    display: block;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}

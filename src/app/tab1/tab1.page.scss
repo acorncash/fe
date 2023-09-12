@@ -18,8 +18,21 @@ p, span {
 }
 
 .ellipsis {
-    overflow: hidden;
+    width: 140px;
+    display: block;
     white-space: nowrap;
+    overflow: hidden;
     text-overflow: ellipsis;
-    word-break: break-all;
+}
+
+.wrap-vertical{
+    width: 700px;
+    padding-right: 350px;
+    overflow: scroll;
+    overflow: auto;
+    white-space: nowrap;
+}
+
+.wrap-vertical::-webkit-scrollbar{
+    display: none; 
 }

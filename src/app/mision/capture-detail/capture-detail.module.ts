@@ -4,17 +4,17 @@ import { FormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
-import { DetailPageRoutingModule } from './detail-routing.module';
+import { CaptureDetailPageRoutingModule } from './capture-detail-routing.module';
 
-import { DetailPage } from './detail.page';
+import { CaptureDetailPage } from './capture-detail.page';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    DetailPageRoutingModule
+    CaptureDetailPageRoutingModule
   ],
-  declarations: [DetailPage]
+  declarations: [CaptureDetailPage]
 })
-export class DetailPageModule {}
+export class CaptureDetailPageModule {}

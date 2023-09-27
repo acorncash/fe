@@ -1,0 +1,35 @@
+import { Injectable } from '@angular/core';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Observable, of } from 'rxjs';
+import { map, catchError, tap } from 'rxjs/operators';
+
+const endpoint = 'http://14.7.33.34:8080/api/';
+const httpOptions = {
+  headers: new HttpHeaders({
+    'Content-Type':  'application/json'
+  })
+};
+
+@Injectable({
+  providedIn: "root"
+})
+
+export class RestService {
+  
+	constructor(private http: HttpClient) { }
+  
+  private extractData(res: any) {
+    let body = res;
+    return body || { };
+  }
+  
+  getMisionList(type:string): Observable<any> {
+    return this.http.get(endpoint + 'mission/list/' + type).pipe(
+    map(this.extractData));
+  }
+  
+  getMisionDetail(seq:string): Observable<any> {
+    return this.http.get(endpoint + 'mission/' + seq).pipe(
+    map(this.extractData));
+  }
+}

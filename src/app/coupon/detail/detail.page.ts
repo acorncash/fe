@@ -18,7 +18,7 @@ export class DetailPage implements OnInit {
     console.log(this.seq);
   }
 
-  popup(){
+  pay(){
     Swal.fire({
       text: "정말 결제 하시겠습니까?",
       icon: 'question',

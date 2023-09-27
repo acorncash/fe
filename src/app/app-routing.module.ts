@@ -7,8 +7,12 @@ const routes: Routes = [
     loadChildren: () => import('./tabs/tabs.module').then(m => m.TabsPageModule)
   },
   {
-    path: 'mision-detail/:seq',
-    loadChildren: () => import('./mision/detail/detail.module').then( m => m.DetailPageModule)
+    path: 'answer-detail/:seq',
+    loadChildren: () => import('./mision/answer-detail/answer-detail.module').then( m => m.AnswerDetailPageModule)
+  },
+  {
+    path: 'capture-detail/:seq',
+    loadChildren: () => import('./mision/capture-detail/capture-detail.module').then( m => m.CaptureDetailPageModule)
   },
   {
     path: 'prs-detail/:seq',
@@ -61,7 +65,7 @@ const routes: Routes = [
   {
     path: 'login',
     loadChildren: () => import('./join/login/login.module').then( m => m.LoginPageModule)
-  }
+  },
 ];
 @NgModule({
   imports: [

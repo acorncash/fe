@@ -13,8 +13,8 @@ export class Tab1Page {
     private router: Router,
   ) {}
   
-  navMisionDetail(seq:number) {  
-    this.router.navigateByUrl('/mision-detail/' + seq);
+  navAnswerDetail(seq:number) {  
+    this.router.navigateByUrl('/answer-detail/' + seq);
   }
 
   navCouponDetail(seq:number) {  

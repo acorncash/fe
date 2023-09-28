@@ -37,4 +37,9 @@ export class RestService {
     return this.http.post(endpoint + 'mission/' + 'answerMission' + seq + "/" + userSeq + "/" + answer, "").pipe(
       map(this.extractData));
   }
+
+  postCaptureMision(seq:string, userSeq:string, image:any) {
+    return this.http.post(endpoint + 'mission/' + 'captureMission' + seq + "/" + userSeq + "/" + image, "").pipe(
+      map(this.extractData));
+  }
 }

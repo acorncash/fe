@@ -47,7 +47,6 @@ export class AnswerDetailPage implements OnInit {
       }).then((result) => {
       if (result.isConfirmed) {
         if(result.value == this.mision.answer) {
-          
           // this.rest.postAnswerMision(this.seq, "703", "result.value").subscribe((data:any) => {
           //   console.log(data);
             if(true) {

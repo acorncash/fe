@@ -48,9 +48,9 @@ export class AnswerDetailPage implements OnInit {
       if (result.isConfirmed) {
         if(result.value == this.mision.answer) {
           
-          this.rest.postAnswerMision(this.seq, "703", "result.value").subscribe((data:any) => {
-            console.log(data);
-            if(data) {
+          // this.rest.postAnswerMision(this.seq, "703", "result.value").subscribe((data:any) => {
+          //   console.log(data);
+            if(true) {
               Swal.fire({
                 text: "적립이 완료되었습니다",
                 icon: 'success',
@@ -65,7 +65,7 @@ export class AnswerDetailPage implements OnInit {
                 confirmButtonText: '닫기',
               })
             }
-          });
+          // });
         } else {
           Swal.fire({
             text: "정답이 아닙니다",

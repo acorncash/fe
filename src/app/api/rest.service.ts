@@ -32,4 +32,9 @@ export class RestService {
     return this.http.get(endpoint + 'mission/' + seq).pipe(
     map(this.extractData));
   }
+
+  postAnswerMision(seq:string, userSeq:string, answer:string) {
+    return this.http.post(endpoint + 'mission/' + 'answerMission' + seq + "/" + userSeq + "/" + answer, "").pipe(
+      map(this.extractData));
+  }
 }

@@ -39,7 +39,7 @@ export class RestService {
   }
 
   getWithdrawByUser(seq:string): Observable<any> {
-    return this.http.get(endpoint + 'withdraw/' + "/" + seq).pipe(
+    return this.http.get(endpoint + 'withdraw/' + seq).pipe(
     map(this.extractData));
   }
 

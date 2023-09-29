@@ -44,17 +44,17 @@ export class RestService {
   }
 
   postAnswerMision(seq:string, userSeq:string, answer:string) {
-    return this.http.post(endpoint + 'mission/' + 'answerMission/' + seq + "/" + userSeq + "/" + answer, "").pipe(
+    return this.http.post(endpoint + 'mission/' + 'answerMission/' + seq + "/" + userSeq + "/" + answer, "", httpOptions).pipe(
       map(this.extractData));
   }
 
   postCaptureMision(seq:string, userSeq:string, image:any) {
-    return this.http.post(endpoint + 'mission/' + 'captureMission/' + seq + "/" + userSeq + "/" + image, "").pipe(
+    return this.http.post(endpoint + 'mission/' + 'captureMission/' + seq + "/" + userSeq + "/" + image, "", httpOptions).pipe(
       map(this.extractData));
   }
 
   postAddWithdraw(jsonModel:string) {
-    return this.http.post(endpoint + 'withdraw/' + 'addWithdraw', jsonModel).pipe(
+    return this.http.post(endpoint + 'withdraw/' + 'addWithdraw', jsonModel, httpOptions).pipe(
       map(this.extractData));
   }
 }

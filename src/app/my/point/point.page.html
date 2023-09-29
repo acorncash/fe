@@ -12,25 +12,25 @@
 <ion-content [fullscreen]="true">
   <div style="padding: 10px 20px">
     <img style="margin-right: 4px; width: 24px;" src="../../assets/icon/dotori_icon.svg"/>
-    <span style="font-size:24px; font-weight: bold; color:#F16C1E; font-weight: bold;">
-      1,400
+    <span *ngIf="list" style="font-size:24px; font-weight: bold; color:#F16C1E; font-weight: bold;">
+      {{list[0].user.dotoli}}
     </span>
   </div>
 
   <div style="width: 100%; height: 8px; background: #F1F1F1; margin: 10px 0;"></div>
 
   <div style="padding: 10px 20px">
-    <div class="item" *ngFor="let number of [0,1,2,3,4]" style="margin-bottom: 32px;">
+    <div class="item" *ngFor="let item of list" style="margin-bottom: 32px;">
       <div style="display: flex; justify-content: space-between;">
         <span style="font-size: 14px; font-weight: bold; color: #292B2C;">
-          GS25 퀴즈
+          {{item.missionTitle}}
         </span>
         <span style="font-size: 14px; font-weight: bold; color: #F16C1E;">
-          000 도토리
+          {{item.missionDotoli}} 도토리
         </span>
       </div>
       <span style="font-size: 14px; color: #7F818B;">
-        2023.08.30 21:17
+        {{datetimeToString(item.createAt)}}
       </span>
     </div>
   </div>

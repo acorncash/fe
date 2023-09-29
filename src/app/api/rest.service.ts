@@ -24,7 +24,7 @@ export class RestService {
   }
   
   getMisionList(type:string): Observable<any> {
-    return this.http.get(endpoint + 'mission/list/' + type).pipe(
+    return this.http.get(endpoint + 'mission/missionByType/' + type).pipe(
     map(this.extractData));
   }
   
@@ -33,13 +33,28 @@ export class RestService {
     map(this.extractData));
   }
 
+  getDotoriByUser(seq:string): Observable<any> {
+    return this.http.get(endpoint + 'dotoli/' + "dotoliByUser/" + seq).pipe(
+    map(this.extractData));
+  }
+
+  getWithdrawByUser(seq:string): Observable<any> {
+    return this.http.get(endpoint + 'withdraw/' + "/" + seq).pipe(
+    map(this.extractData));
+  }
+
   postAnswerMision(seq:string, userSeq:string, answer:string) {
-    return this.http.post(endpoint + 'mission/' + 'answerMission' + seq + "/" + userSeq + "/" + answer, "").pipe(
+    return this.http.post(endpoint + 'mission/' + 'answerMission/' + seq + "/" + userSeq + "/" + answer, "").pipe(
       map(this.extractData));
   }
 
   postCaptureMision(seq:string, userSeq:string, image:any) {
-    return this.http.post(endpoint + 'mission/' + 'captureMission' + seq + "/" + userSeq + "/" + image, "").pipe(
+    return this.http.post(endpoint + 'mission/' + 'captureMission/' + seq + "/" + userSeq + "/" + image, "").pipe(
+      map(this.extractData));
+  }
+
+  postAddWithdraw(jsonModel:string) {
+    return this.http.post(endpoint + 'withdraw/' + 'addWithdraw', jsonModel).pipe(
       map(this.extractData));
   }
 }

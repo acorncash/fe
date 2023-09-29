@@ -68,7 +68,7 @@ export class CaptureDetailPage implements OnInit {
           .then(dataUrl => {
             console.log('RESULT:', dataUrl)
 
-            this.rest.postCaptureMision(this.seq, "703", dataUrl).subscribe((data:any) => {
+            this.rest.postCaptureMision(this.seq, "703", "image").subscribe((data:any) => {
               console.log(data);
               if(true) {
                 Swal.fire({
@@ -89,7 +89,7 @@ export class CaptureDetailPage implements OnInit {
           })
         } else {
           Swal.fire({
-            text: "정답이 아닙니다",
+            text: "사진을 첨부해주세요",
             icon: 'error',
             heightAuto: false,
             confirmButtonText: '닫기',

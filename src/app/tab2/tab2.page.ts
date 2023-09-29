@@ -8,7 +8,7 @@ import { RestService } from 'src/app/api/rest.service';
 })
 
 export class Tab2Page {
-  selectedMenu = "normal";
+  selectedMenu = "answer";
   answerMisionList: any;
   captureMisionList: any;
 

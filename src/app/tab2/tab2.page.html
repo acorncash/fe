@@ -7,9 +7,9 @@
 
   <ion-toolbar style="--background:#fff; --border-width: 0;">
     <div style="width: 100%; background: #F6F6F6; padding: 8px 16px;">
-      <span (click)="clickMenu('normal')" style="font-weight: bold; font-size: 18px; margin-right: 12px;" [ngClass]="selectedMenu == 'normal' ? 'orange' : 'gray'">
+      <!-- <span (click)="clickMenu('normal')" style="font-weight: bold; font-size: 18px; margin-right: 12px;" [ngClass]="selectedMenu == 'normal' ? 'orange' : 'gray'">
         노말미션
-      </span>
+      </span> -->
       <span (click)="clickMenu('answer')" style="font-weight: bold; font-size: 18px; margin-right: 12px;" [ngClass]="selectedMenu == 'answer' ? 'orange' : 'gray'">
         정답미션
       </span>
@@ -22,7 +22,7 @@
 
 <ion-content [fullscreen]="true">
 
-  <div *ngIf="selectedMenu == 'normal'">
+  <!-- <div *ngIf="selectedMenu == 'normal'">
     <div style="padding: 0px 24px;">
       <p style="font-size: 14px; margin-bottom: 24px;">
         전체 미션 5개
@@ -55,11 +55,11 @@
         </div>
       </div>
     </div>
-  </div>
+  </div> -->
 
   <div *ngIf="selectedMenu == 'answer'">
     <div style="padding: 0px 24px;"> 
-      <p style="font-size: 14px; margin-bottom: 24px;">
+      <p *ngIf="answerMisionList" style="font-size: 14px; margin-bottom: 24px;">
         전체 미션 {{answerMisionList.length}}개
       </p>
       
@@ -94,7 +94,7 @@
 
   <div *ngIf="selectedMenu == 'capture'">
     <div style="padding: 0px 24px;"> 
-      <p style="font-size: 14px; margin-bottom: 24px;">
+      <p *ngIf="captureMisionList" style="font-size: 14px; margin-bottom: 24px;">
         전체 미션 {{captureMisionList.length}}개
       </p>
       

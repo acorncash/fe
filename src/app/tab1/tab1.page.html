@@ -33,22 +33,22 @@
     </div>
 
     <div class="scrollmenu" style="display: flex; align-items: flex-start; gap: 13px; overflow-x: auto;">
-      <div *ngFor="let number of [0,1,2,3,4]" (click)="navAnswerDetail(number)">
-        <div style="width:140px; height: 100px; background: #F5B700; border-radius: 10px;"></div>
+      <div *ngFor="let mision of misionList" (click)="navAnswerDetail(mision.seq)">
+        <img src='../../assets/icon/basic.png' style="width: 140px; height: 100px; border-radius: 10px;" />
         <div class="ellipsis">
           <span style="font-size: 14px; color: #292B2C; font-weight: bold; margin-bottom: 0;">
-            GS25 퀴즈
+            {{mision.title}}
           </span>
         </div>
-        <span style="font-size: 14px; color: #7F818B; margin-right: 6px;">
+        <!-- <span style="font-size: 14px; color: #7F818B; margin-right: 6px;">
           D-3
-        </span>
+        </span> -->
         <img src="../../assets/icon/people.svg"/>
         <span style="font-size: 14px; color: #7F818B;">
-          100
+          {{mision.attendCnt}}
         </span>
         <p style="font-size: 12px; color: #F16C1E; font-weight: bold; margin-top: 8px;">
-          500 도토리 적립
+          {{mision.dotoli}} 도토리 적립
         </p>
       </div>
     </div>

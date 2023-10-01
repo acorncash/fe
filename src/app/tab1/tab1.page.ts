@@ -8,7 +8,8 @@ import { RestService } from 'src/app/api/rest.service';
 })
 export class Tab1Page {
   misionList: any;
-  
+  captureMisionList: any;
+
   constructor(
     private router: Router,
     private rest: RestService,
@@ -32,9 +33,9 @@ export class Tab1Page {
       console.log(data);
       this.misionList = data;
     });
-    // this.rest.getMisionList("C").subscribe((data:any) => {
-    //   console.log(data);
-    //   this.misionList += data;
-    // });
+    this.rest.getMisionList("C").subscribe((data:any) => {
+      console.log(data);
+      this.captureMisionList = data;
+    });
   }
 }

@@ -22,7 +22,15 @@ export class RestService {
     let body = res;
     return body || { };
   }
-  
+
+  kakao(): Observable<any> {
+    const clientID = "b2f9c8bcb75d5dc1e65936bcffc386d1";
+    const redirectURL = "http://localhost:8080/oauth";
+
+    return this.http.get('https://kauth.kakao.com/oauth/authorize?response_type=code&client_id=' + redirectURL + '&redirect_uri=' + redirectURL).pipe(
+    map(this.extractData));
+  }
+
   getMisionList(type:string): Observable<any> {
     return this.http.get(endpoint + 'mission/missionByType/' + type).pipe(
     map(this.extractData));

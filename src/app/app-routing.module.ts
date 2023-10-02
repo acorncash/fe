@@ -4,7 +4,15 @@ import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 const routes: Routes = [
   {
     path: '',
-    loadChildren: () => import('./tabs/tabs.module').then(m => m.TabsPageModule)
+    loadChildren: () => import('./join/login/login.module').then( m => m.LoginPageModule)
+  },
+  {
+    path: 'tabs',
+    loadChildren: () => import('./tabs/tabs.module').then( m => m.TabsPageModule)
+  },
+  {
+    path: 'complete',
+    loadChildren: () => import('./join/complete/complete.module').then( m => m.CompletePageModule)
   },
   {
     path: 'answer-detail/:seq',
@@ -55,16 +63,12 @@ const routes: Routes = [
     loadChildren: () => import('./my/quit/quit.module').then( m => m.QuitPageModule)
   },
   {
-    path: 'complete',
-    loadChildren: () => import('./join/complete/complete.module').then( m => m.CompletePageModule)
-  },
-  {
     path: 'tos',
     loadChildren: () => import('./join/tos/tos.module').then( m => m.TosPageModule)
   },
   {
-    path: 'login',
-    loadChildren: () => import('./join/login/login.module').then( m => m.LoginPageModule)
+    path: 'callback',
+    loadChildren: () => import('./join/callback/callback.module').then( m => m.CallbackPageModule)
   },
 ];
 @NgModule({

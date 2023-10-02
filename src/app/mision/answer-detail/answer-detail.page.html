@@ -11,9 +11,9 @@
 
 <ion-content [fullscreen]="true">
   <div class="slider">
-    <div class="slide" id="slide-1">
+    <!-- <div class="slide" id="slide-1">
       <img src={{mision?.image}} onerror="this.src='../../assets/image/banner3.png'"/>
-    </div>
+    </div> -->
     <!-- <div class="slide" id="slide-2"> 
       <img src="../../assets/image/banner2.png"/>
     </div>
@@ -35,7 +35,7 @@
     </p>
 
     <div style="text-align: center;">
-      <ion-button (click)="openPage('http://www.google.com')" shape="round" style="height: 42px; font-size: 16px; font-weight: bold; border-radius: 100%; --background:#FF9040; --background-activated: #F16C1E">
+      <ion-button (click)="openPage('https://nid.naver.com/nidlogin.login?svctype=262144&mode=form&url=' + '{{mision?.url}}')" shape="round" style="height: 42px; font-size: 16px; font-weight: bold; border-radius: 100%; --background:#FF9040; --background-activated: #F16C1E">
         <div>정답 찾으러 가기</div>
       </ion-button>
     </div>

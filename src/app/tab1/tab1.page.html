@@ -25,7 +25,7 @@
   <div style="margin:32px 24px 84px 24px">
     <div style="display: flex; margin-bottom: 24px;">
       <span style="font-size: 18px; font-weight: bold;">
-        진행중인 미션
+        정답미션
       </span>
       <!-- <span style="margin-left: auto; font-size: 14px; color: #B6B3B3;" routerLink="../tab2">
         더보기
@@ -57,11 +57,41 @@
 
     <div style="display: flex; margin-bottom: 24px;">
       <span style="font-size: 18px; font-weight: bold;">
-        모바일 교환권
+        캡처미션
       </span>
-      <!-- <span style="margin-left: auto; font-size: 14px; color: #B6B3B3;" routerLink="../tab4">
+      <!-- <span style="margin-left: auto; font-size: 14px; color: #B6B3B3;" routerLink="../tab2">
         더보기
       </span> -->
+    </div>
+
+    <div class="scrollmenu" style="display: flex; align-items: flex-start; gap: 13px; overflow-x: auto;">
+      <div *ngFor="let mision of captureMisionList" (click)="navAnswerDetail(mision.seq)">
+        <img src='../../assets/icon/basic.png' style="width: 140px; height: 100px; border-radius: 10px;" />
+        <div class="ellipsis">
+          <span style="font-size: 14px; color: #292B2C; font-weight: bold; margin-bottom: 0;">
+            {{mision.title}}
+          </span>
+        </div>
+        <!-- <span style="font-size: 14px; color: #7F818B; margin-right: 6px;">
+          D-3
+        </span> -->
+        <img src="../../assets/icon/people.svg"/>
+        <span style="font-size: 14px; color: #7F818B;">
+          {{mision.attendCnt}}
+        </span>
+        <p style="font-size: 12px; color: #F16C1E; font-weight: bold; margin-top: 8px;">
+          {{mision.dotoli}} 도토리 적립
+        </p>
+      </div>
+    </div>
+    
+    <!-- <div style="display: flex; margin-bottom: 24px;">
+      <span style="font-size: 18px; font-weight: bold;">
+        모바일 교환권
+      </span>
+      <span style="margin-left: auto; font-size: 14px; color: #B6B3B3;" routerLink="../tab4">
+        더보기
+      </span>
     </div>
 
     <div class="scrollmenu" style="display: flex; align-items: flex-start; gap: 13px; overflow-x: auto;">
@@ -79,6 +109,6 @@
           11,500 도토리
         </p>
       </div>
-    </div>
+    </div> -->
   </div>
 </ion-content>

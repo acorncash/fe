@@ -10,6 +10,6 @@ export const environment = {
     measurementId: ''
   },
 
-  uri: 'http://14.7.33.34:8080/',
-  imguri :'http://14.7.33.34:8080/',
+  uri: 'http://localhost/8100/',
+  imguri :'http://localhost/8100/',
 };

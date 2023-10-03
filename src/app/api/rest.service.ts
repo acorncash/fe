@@ -23,14 +23,21 @@ export class RestService {
     return body || { };
   }
 
-  kakao(): Observable<any> {
-    const clientID = "b2f9c8bcb75d5dc1e65936bcffc386d1";
-    const redirectURL = "http://localhost:8080/oauth";
-
-    return this.http.get('https://kauth.kakao.com/oauth/authorize?response_type=code&client_id=' + redirectURL + '&redirect_uri=' + redirectURL).pipe(
+  getLogin(socialKey:string, refreshToken:string): Observable<any> {
+    return this.http.get(endpoint + "user/" + 'login/' + socialKey + "/" + refreshToken).pipe(
     map(this.extractData));
   }
 
+  getKakaoUser(socialKey:string): Observable<any> {
+    return this.http.get("https://kapi.kakao.com/v2/user/me", {
+      headers: new HttpHeaders({
+        'Authorization':  `Bearer ${socialKey}`
+         // property_keys: "kakao_account.email"
+      })
+    }).pipe(
+    map(this.extractData));
+  }
+  
   getMisionList(type:string): Observable<any> {
     return this.http.get(endpoint + 'mission/missionByType/' + type).pipe(
     map(this.extractData));
@@ -49,6 +56,11 @@ export class RestService {
   getWithdrawByUser(seq:string): Observable<any> {
     return this.http.get(endpoint + 'withdraw/' + seq).pipe(
     map(this.extractData));
+  }
+
+  postJoin(jsonModel:string) {
+    return this.http.post(endpoint + 'user/' + 'join', jsonModel, httpOptions).pipe(
+      map(this.extractData));
   }
 
   postAnswerMision(seq:string, userSeq:string, answer:string) {

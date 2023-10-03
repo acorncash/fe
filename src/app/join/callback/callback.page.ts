@@ -80,6 +80,7 @@ export class CallbackPage implements OnInit {
       } else {
         //login Success
         localStorage.setItem("name", this.loginData.name)
+        localStorage.setItem("seq", this.loginData.seq)
         window.location.replace('/tabs/tab1');
       }
     });

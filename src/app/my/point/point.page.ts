@@ -6,7 +6,7 @@ import { RestService } from 'src/app/api/rest.service';
   styleUrls: ['./point.page.scss'],
 })
 export class PointPage implements OnInit {
-  userSeq: string = "703";
+  userSeq: any;
   list: any;
 
   constructor(
@@ -14,6 +14,7 @@ export class PointPage implements OnInit {
   ) { }
 
   ngOnInit() {
+    this.userSeq = localStorage.getItem("seq");
   }
   
   ionViewWillEnter() {

@@ -7,6 +7,8 @@ import { RestService } from 'src/app/api/rest.service';
   styleUrls: ['tab1.page.scss']
 })
 export class Tab1Page {
+  dotori:any = "0";
+  name:any;
   misionList: any;
   captureMisionList: any;
 
@@ -15,6 +17,10 @@ export class Tab1Page {
     private rest: RestService,
   ) {}
   
+  ngOnInit() {
+    this.name = localStorage.getItem("name");
+  }
+
   ionViewWillEnter() {
     this.getMisionList();
   }

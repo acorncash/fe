@@ -22,6 +22,40 @@
 
 <ion-content [fullscreen]="true">
 
+  <div *ngIf="selectedMenu == 'answer'">
+    <div style="padding: 0px 24px;"> 
+      <p *ngIf="answerMisionList" style="font-size: 14px; margin-bottom: 24px;">
+        전체 미션 {{answerMisionList.length}}개
+      </p>
+      
+      <div *ngFor="let mision of answerMisionList" style="display: flex; margin-bottom: 32px;" (click)="navAnswerDetail(mision.seq)">
+        <img src='../../assets/icon/basic.png' style="width: 65px; height: 65px; border-radius: 10px;" />
+        <div style="padding-left: 20px; font-size: 14px; color: #7F818B;">
+          <p style="margin: 0; font-weight: bold; margin-bottom: 4px; color: #1C1C1D;">
+            {{mision.title}}
+          </p>
+          <!-- <div class="ellipsis" style="margin-bottom: 4px;">
+            <span>
+              {{mision.description}}
+            </span>
+          </div> -->
+          <!-- <div style="margin-bottom: 4px;">
+            <span>
+              D-3
+            </span>
+            <img src="../../assets/icon/people.svg"/>
+            <span>
+              {{mision.attendCnt}}
+            </span>
+          </div> -->
+          <p style="margin: 0; color: #F16C1E; font-weight: bold;">
+            {{mision.dotoli}} 도토리 적립
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <div *ngIf="selectedMenu == 'normal'">
     <div style="padding: 0px 24px;">
       <p style="font-size: 14px; margin-bottom: 24px;">
@@ -58,40 +92,6 @@
     </div>
   </div>
 
-  <div *ngIf="selectedMenu == 'answer'">
-    <div style="padding: 0px 24px;"> 
-      <p *ngIf="answerMisionList" style="font-size: 14px; margin-bottom: 24px;">
-        전체 미션 {{answerMisionList.length}}개
-      </p>
-      
-      <div *ngFor="let mision of answerMisionList" style="display: flex; margin-bottom: 32px;" (click)="navAnswerDetail(mision.seq)">
-        <img src='../../assets/icon/basic.png' style="width: 90px; height: 90px; border-radius: 10px;" />
-        <div style="padding-left: 20px; font-size: 14px; color: #7F818B;">
-          <p style="margin: 0; font-weight: bold; margin-bottom: 4px; color: #1C1C1D;">
-            {{mision.title}}
-          </p>
-          <div class="ellipsis" style="margin-bottom: 4px;">
-            <span>
-              {{mision.description}}
-            </span>
-          </div>
-          <div style="margin-bottom: 4px;">
-            <!-- <span>
-              D-3
-            </span> -->
-            <img src="../../assets/icon/people.svg"/>
-            <span>
-              {{mision.attendCnt}}
-            </span>
-          </div>
-          <p style="margin: 0; color: #F16C1E; font-weight: bold;">
-            {{mision.dotoli}} 도토리 적립
-          </p>
-        </div>
-      </div>
-    </div>
-  </div>
-
   <div *ngIf="selectedMenu == 'capture'">
     <div style="padding: 0px 24px;"> 
       <p *ngIf="captureMisionList" style="font-size: 14px; margin-bottom: 24px;">
@@ -99,7 +99,7 @@
       </p>
       
       <div *ngFor="let mision of captureMisionList" style="display: flex; margin-bottom: 32px;" (click)="navCaptureDetail(mision.seq)">
-        <img src='../../assets/icon/basic.png' style="width: 90px; height: 90px; border-radius: 10px;" />
+        <img src='../../assets/icon/basic.png' style="width: 65px; height: 65px; border-radius: 10px;" />
         <div style="padding-left: 20px; font-size: 14px; color: #7F818B;">
           <p style="margin: 0; font-weight: bold; margin-bottom: 4px; color: #1C1C1D;">
             {{mision.title}}
@@ -109,15 +109,15 @@
               {{mision.description}}
             </span>
           </div>
-          <div style="margin-bottom: 4px;">
-            <!-- <span>
+          <!-- <div style="margin-bottom: 4px;">
+            <span>
               D-3
-            </span> -->
+            </span>
             <img src="../../assets/icon/people.svg"/>
             <span>
               {{mision.attendCnt}}
             </span>
-          </div>
+          </div> -->
           <p style="margin: 0; color: #F16C1E; font-weight: bold;">
             {{mision.dotoli}} 도토리 적립
           </p>

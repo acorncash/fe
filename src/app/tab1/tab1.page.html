@@ -22,93 +22,88 @@
     </div>
   </div>
   
-  <div style="margin:32px 24px 84px 24px">
-    <div style="display: flex; margin-bottom: 24px;">
-      <span style="font-size: 18px; font-weight: bold;">
-        정답미션
-      </span>
-      <!-- <span style="margin-left: auto; font-size: 14px; color: #B6B3B3;" routerLink="../tab2">
-        더보기
-      </span> -->
-    </div>
-
-    <div class="scrollmenu" style="display: flex; align-items: flex-start; gap: 13px; overflow-x: auto;">
-      <div *ngFor="let mision of misionList" (click)="navAnswerDetail(mision.seq)">
-        <img src='../../assets/icon/basic.png' style="width: 140px; height: 100px; border-radius: 10px;" />
-        <div class="ellipsis">
-          <span style="font-size: 14px; color: #292B2C; font-weight: bold; margin-bottom: 0;">
-            {{mision.title}}
-          </span>
-        </div>
-        <!-- <span style="font-size: 14px; color: #7F818B; margin-right: 6px;">
-          D-3
-        </span> -->
-        <img src="../../assets/icon/people.svg"/>
-        <span style="font-size: 14px; color: #7F818B;">
-          {{mision.attendCnt}}
-        </span>
-        <p style="font-size: 12px; color: #F16C1E; font-weight: bold; margin-top: 8px;">
-          {{mision.dotoli}} 도토리 적립
-        </p>
+  <div style="margin:24px 24px 84px 24px">
+    <div style="width: 100%; height: 120px; background: #eaeaea; border-radius: 10px; margin-bottom: 24px; padding: 8px 12px;">
+      <div style="display: flex; justify-content: space-between;">
+        <b style="margin-top: 10px;">
+          {{name}}
+        </b>
+        <ion-button style="font-size: 12px; --background: #FF9040; --padding-start: 12px; --padding-end:12px; --background-activated: #F16C1E" shape="round" routerLink="/point">
+          도토리 내역
+        </ion-button>
       </div>
-    </div>
 
-    <div style="height: 48px;"></div>
+      <div style="margin-top: 8px; margin-bottom: 4px; width: 100%; border: 1px solid #fff;"></div>
 
-    <div style="display: flex; margin-bottom: 24px;">
-      <span style="font-size: 18px; font-weight: bold;">
-        캡처미션
-      </span>
-      <!-- <span style="margin-left: auto; font-size: 14px; color: #B6B3B3;" routerLink="../tab2">
-        더보기
-      </span> -->
-    </div>
-
-    <div class="scrollmenu" style="display: flex; align-items: flex-start; gap: 13px; overflow-x: auto;">
-      <div *ngFor="let mision of captureMisionList" (click)="navAnswerDetail(mision.seq)">
-        <img src='../../assets/icon/basic.png' style="width: 140px; height: 100px; border-radius: 10px;" />
-        <div class="ellipsis">
-          <span style="font-size: 14px; color: #292B2C; font-weight: bold; margin-bottom: 0;">
-            {{mision.title}}
-          </span>
-        </div>
-        <!-- <span style="font-size: 14px; color: #7F818B; margin-right: 6px;">
-          D-3
-        </span> -->
-        <img src="../../assets/icon/people.svg"/>
-        <span style="font-size: 14px; color: #7F818B;">
-          {{mision.attendCnt}}
+      <div style="display: flex; justify-content: space-between;">
+        <span style="margin-top: 10px; font-size: 16px;">
+          내 보유 도토리
         </span>
-        <p style="font-size: 12px; color: #F16C1E; font-weight: bold; margin-top: 8px;">
-          {{mision.dotoli}} 도토리 적립
-        </p>
+        <b style="margin-top: 6px; margin-right: 4px;">
+          {{dotori}}
+        </b>
       </div>
     </div>
     
-    <!-- <div style="display: flex; margin-bottom: 24px;">
+    <ion-button routerLink="/tabs/tab2" expand="block" style="height: 56px; font-size: 20px; font-weight: bold; border-radius: 10px; --background: #FF9040; --background-activated: #F16C1E">
+      <div>미션하러가기</div>
+    </ion-button>
+
+    <div style="display: flex; margin: 24px 0;">
       <span style="font-size: 18px; font-weight: bold;">
         모바일 교환권
       </span>
-      <span style="margin-left: auto; font-size: 14px; color: #B6B3B3;" routerLink="../tab4">
+      <span style="margin-left: auto; font-size: 14px; color: #B6B3B3;" routerLink="/tabs/tab4">
         더보기
       </span>
     </div>
 
     <div class="scrollmenu" style="display: flex; align-items: flex-start; gap: 13px; overflow-x: auto;">
-      <div *ngFor="let number of [0,1,2,3,4]" (click)="navCouponDetail(number)">
-        <div style="width:140px; height: 100px; background: #CAE7E2; border-radius: 10px;"></div>
+      <!-- *ngFor="let number of [0,1,2,3,4]" (click)="navCouponDetail(number)" -->
+      <div>
+        <img style="width: 120px; height: 120px; border-radius: 10px;" src="../../assets/image/gift_4.png">
         <p style="font-size: 14px; color: #7F818B; margin-bottom: 0;">
-          스타벅스
+          투썸플레이스
         </p>
-        <div class="ellipsis">
-          <span style="font-size: 14px; color: #292B2C; font-weight: bold; margin: 0;">
-            자몽허니블랙티&가나슈
+        <div>
+          <span class="ellipsis" style="font-size: 14px; color: #292B2C; font-weight: bold; margin: 0;">
+            스트로베리 초콜릿 생크림
           </span>
         </div>
         <p style="font-size: 12px; color: #F16C1E; font-weight: bold; margin-top: 8px;">
-          11,500 도토리
+          37,000 도토리
         </p>
       </div>
-    </div> -->
+
+      <div>
+        <img style="width: 120px; height: 120px; border-radius: 10px;" src="../../assets/image/gift_5.png">
+        <p style="font-size: 14px; color: #7F818B; margin-bottom: 0;">
+          애니베이크
+        </p>
+        <div>
+          <span class="ellipsis" style="font-size: 14px; color: #292B2C; font-weight: bold; margin: 0;">
+            파베 수제 생초콜릿 (밀크/다크)
+          </span>
+        </div>
+        <p style="font-size: 12px; color: #F16C1E; font-weight: bold; margin-top: 8px;">
+          16,900 도토리
+        </p>
+      </div>
+
+      <div>
+        <img style="width: 120px; height: 120px; border-radius: 10px;" src="../../assets/image/gift_2.png">
+        <p style="font-size: 14px; color: #7F818B; margin-bottom: 0;">
+          투썸플레이스
+        </p>
+        <div>
+          <span class="ellipsis" style="font-size: 14px; color: #292B2C; font-weight: bold; margin: 0;">
+            카페라떼 (R) 2잔
+          </span>
+        </div>
+        <p style="font-size: 12px; color: #F16C1E; font-weight: bold; margin-top: 8px;">
+          10,000 도토리
+        </p>
+      </div>
+    </div>
   </div>
 </ion-content>

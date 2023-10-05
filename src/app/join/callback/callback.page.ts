@@ -59,7 +59,7 @@ export class CallbackPage implements OnInit {
       if(this.loginData.length <= 0) {
         const data = {
           socialKey: this.kakaoUserData.id.toString(),
-          refreshToken: socialKey,
+          refreshToken: refreshToken,
           id: "",
           password: "",
           name: "이름1",
@@ -80,6 +80,7 @@ export class CallbackPage implements OnInit {
       } else {
         //login Success
         localStorage.setItem("name", this.loginData.name)
+        localStorage.setItem("dotori", this.loginData.dotoli)
         localStorage.setItem("seq", this.loginData.seq)
         window.location.replace('/tabs/tab1');
       }

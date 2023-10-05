@@ -19,6 +19,7 @@ export class Tab1Page {
   
   ngOnInit() {
     this.name = localStorage.getItem("name");
+    this.dotori = localStorage.getItem("dotori");
   }
 
   ionViewWillEnter() {

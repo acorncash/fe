@@ -9,8 +9,8 @@ import { RestService } from 'src/app/api/rest.service';
 
 export class Tab2Page {
   selectedMenu = "answer";
-  answerMisionList: any;
-  captureMisionList: any;
+  answerMissionList: any;
+  captureMissionList: any;
 
   constructor(
     private router: Router,
@@ -37,16 +37,16 @@ export class Tab2Page {
   }
 
   getMisionList() {
-    this.answerMisionList = [];
+    this.answerMissionList = [];
     this.rest.getMisionList("A").subscribe((data:any) => {
       console.log(data);
-      this.answerMisionList = data;
+      this.answerMissionList = data;
     });
 
-    this.captureMisionList = [];
+    this.captureMissionList = [];
     this.rest.getMisionList("C").subscribe((data:any) => {
       console.log(data);
-      this.captureMisionList = data;
+      this.captureMissionList = data;
     });
   }
 }

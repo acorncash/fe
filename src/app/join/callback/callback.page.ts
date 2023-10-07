@@ -51,14 +51,20 @@ export class CallbackPage implements OnInit {
       console.log(data);
       this.loginData = data;
 
-      if(this.loginData.length <= 0) {
+      if(this.loginData != null) {
+        //login Success
+        localStorage.setItem("name", this.loginData.name)
+        localStorage.setItem("dotori", this.loginData.dotoli)
+        localStorage.setItem("seq", this.loginData.seq)
+        window.location.replace('/tabs/tab1');
+      } else {
         const data = {
           socialKey: this.kakaoUserData.id.toString(),
           refreshToken: refreshToken,
           id: "",
           password: "",
-          name: "이름1",
-          nickname: "닉",
+          name: this.kakaoUserData.id.toString(),
+          nickname: this.kakaoUserData.id.toString(),
           phoneNumber: "",
           email: "",
         }
@@ -72,12 +78,6 @@ export class CallbackPage implements OnInit {
             this.getLogin(socialKey, refreshToken);
           }
         });
-      } else {
-        //login Success
-        localStorage.setItem("name", this.loginData.name)
-        localStorage.setItem("dotori", this.loginData.dotoli)
-        localStorage.setItem("seq", this.loginData.seq)
-        window.location.replace('/tabs/tab1');
       }
     });
   }

@@ -6,10 +6,11 @@ import { environment } from '../../../environments/environment';
   styleUrls: ['./login.page.scss'],
 })
 export class LoginPage implements OnInit {
-    
+    host:any;
   constructor() { }
 
   ngOnInit() {
+    this.host = window.location.host;
   }
 
   kakao() {

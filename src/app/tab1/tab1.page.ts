@@ -45,4 +45,8 @@ export class Tab1Page {
       this.captureMisionList = data;
     });
   }
+  
+  addComma(string:any) {
+    return string.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+  }
 }

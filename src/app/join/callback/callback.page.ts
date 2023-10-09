@@ -20,7 +20,7 @@ export class CallbackPage implements OnInit {
   }
 
   ngOnInit() {
-    const REDIRECT_URI = "http://" + window.location.host +":8100/callback";
+    const REDIRECT_URI = "http://" + window.location.host +"/callback";
 
     axios
       .post(

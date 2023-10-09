@@ -11,6 +11,7 @@ import Swal from 'sweetalert2';
 export class CaptureDetailPage implements OnInit {
   seq: string = "0";
   mision: any;
+  description: string = "";
 
   constructor(
     private rest: RestService,
@@ -30,6 +31,7 @@ export class CaptureDetailPage implements OnInit {
     this.rest.getMisionDetail(this.seq).subscribe((data:any) => {
       console.log(data);
       this.mision = data;
+      this.description = this.mision.description.toString().replace(/\\r\\n|\\n|\\r/gm,"\r\n");
     });
   }
 

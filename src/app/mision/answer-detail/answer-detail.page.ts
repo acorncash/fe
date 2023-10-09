@@ -9,7 +9,8 @@ import Swal from 'sweetalert2';
 })
 export class AnswerDetailPage implements OnInit {
   seq: string = "0";
-  mision: any;
+  mission: any;
+  description: string = "";
 
   constructor(
     private rest: RestService,
@@ -21,14 +22,15 @@ export class AnswerDetailPage implements OnInit {
   }
 
   ionViewWillEnter() {
-    this.getMisionDetail();
+    this.getMissionDetail();
   }
 
-  getMisionDetail() {
-    this.mision = [];
+  getMissionDetail() {
+    this.mission = [];
     this.rest.getMisionDetail(this.seq).subscribe((data:any) => {
       console.log(data);
-      this.mision = data;
+      this.mission = data;
+      this.description = this.mission.description.toString().replace(/\\r\\n|\\n|\\r/gm,"\r\n");
     });
   }
 
@@ -46,8 +48,8 @@ export class AnswerDetailPage implements OnInit {
       cancelButtonText: "취소",
       }).then((result) => {
       if (result.isConfirmed) {
-        if(result.value == this.mision.answer) {
-          // this.rest.postAnswerMision(this.seq, "703", "result.value").subscribe((data:any) => {
+        if(result.value == this.mission.answer) {
+          // this.rest.postAnswerMission(this.seq, "703", "result.value").subscribe((data:any) => {
           //   console.log(data);
             if(true) {
               Swal.fire({

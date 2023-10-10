@@ -9,7 +9,8 @@ import Swal from 'sweetalert2';
   styleUrls: ['./capture-detail.page.scss'],
 })
 export class CaptureDetailPage implements OnInit {
-  seq: string = "0";
+  seq: number = 0;
+  userSeq: number = 0;
   mision: any;
   description: string = "";
 
@@ -19,6 +20,7 @@ export class CaptureDetailPage implements OnInit {
 
   async ngOnInit() {
     this.seq = this.route.snapshot.params['seq'];
+    this.userSeq = Number(localStorage.getItem("seq"));
     console.log(this.seq);
   }
 
@@ -28,7 +30,7 @@ export class CaptureDetailPage implements OnInit {
 
   getMisionDetail() {
     this.mision = [];
-    this.rest.getMisionDetail(this.seq).subscribe((data:any) => {
+    this.rest.getMisionDetail(this.seq.toString()).subscribe((data:any) => {
       console.log(data);
       this.mision = data;
       this.description = this.mision.description.toString().replace(/\\r\\n|\\n|\\r/gm,"\r\n");
@@ -64,13 +66,18 @@ export class CaptureDetailPage implements OnInit {
       }).then((result) => {
       if (result.isConfirmed) {
         if(result.value) {
-          console.log(result.value);
+          console.log(result);
           
-          toDataURL('https://www.gravatar.com/avatar/d50c83cc0c6523b4d3f6085295c953e0')
-          .then(dataUrl => {
-            console.log('RESULT:', dataUrl)
-
-            this.rest.postCaptureMision(this.seq, "703", "image").subscribe((data:any) => {
+            const data = {
+              missionSeq: Number(this.seq),
+              userSeq: this.userSeq,
+              image: result.value,
+            }
+        
+            var json = JSON.stringify(data) ;
+            console.log(json);
+            
+            this.rest.postCaptureMision(json).subscribe((data:any) => {
               console.log(data);
               if(true) {
                 Swal.fire({
@@ -87,7 +94,6 @@ export class CaptureDetailPage implements OnInit {
                   confirmButtonText: '닫기',
                 })
               }
-            });
           })
         } else {
           Swal.fire({

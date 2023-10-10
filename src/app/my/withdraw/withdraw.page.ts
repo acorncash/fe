@@ -11,13 +11,14 @@ export class WithdrawPage implements OnInit {
   amount:any;
   banknumber:any;
   bankname:any;
-
+  dotori:any = "0";
   constructor(
     private rest: RestService,
   ) { }
 
 
   ngOnInit() {
+    this.dotori = localStorage.getItem("dotori");
   }
 
   submit() {
@@ -49,5 +50,9 @@ export class WithdrawPage implements OnInit {
         })
       }
     });
+  }
+  
+  addComma(string:any) {
+    return string.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
   }
 }

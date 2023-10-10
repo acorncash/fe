@@ -68,8 +68,8 @@ export class RestService {
       map(this.extractData));
   }
 
-  postCaptureMision(seq:string, userSeq:string, image:any) {
-    return this.http.post(endpoint + 'mission/' + 'captureMission/' + seq + "/" + userSeq + "/" + image, "", httpOptions).pipe(
+  postCaptureMision(jsonModel:string) {
+    return this.http.post(endpoint + 'mission/' + 'captureMission', jsonModel, httpOptions).pipe(
       map(this.extractData));
   }
 

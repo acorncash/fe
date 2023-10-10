@@ -6,7 +6,7 @@ import { RestService } from 'src/app/api/rest.service';
   styleUrls: ['./withdraw-list.page.scss'],
 })
 export class WithdrawListPage implements OnInit {
-  userSeq: string = "703";
+  userSeq: any;
   list: any;
 
   constructor(
@@ -14,6 +14,7 @@ export class WithdrawListPage implements OnInit {
   ) { }
 
   ngOnInit() {
+    this.userSeq = localStorage.getItem("seq");
   }
 
   ionViewWillEnter() {
@@ -22,7 +23,7 @@ export class WithdrawListPage implements OnInit {
 
   getWithdrawByUser() {
     this.list = [];
-    this.rest.getWithdrawByUser(this.userSeq).subscribe((data:any) => {
+    this.rest.getWithdrawByUser(this.userSeq.toString()).subscribe((data:any) => {
       console.log(data);
       this.list = data;
     });

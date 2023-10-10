@@ -18,12 +18,15 @@ export class Tab1Page {
   ) {}
   
   ngOnInit() {
-    localStorage.setItem("name", "사용자")
-    localStorage.setItem("dotori", "0")
-    localStorage.setItem("seq", "809")
+    this.rest.getLogin("3047198451", "000000").subscribe((data:any) => {
+      console.log(data);
+      localStorage.setItem("name", data.nickname)
+      localStorage.setItem("dotori", data.dotoli)
+      localStorage.setItem("seq", data.seq)
 
-    this.name = localStorage.getItem("name");
-    this.dotori = localStorage.getItem("dotori");
+      this.name = localStorage.getItem("name");
+      this.dotori = localStorage.getItem("dotori");
+    });
   }
 
   ionViewWillEnter() {

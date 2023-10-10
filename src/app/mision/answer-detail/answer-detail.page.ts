@@ -9,6 +9,7 @@ import Swal from 'sweetalert2';
 })
 export class AnswerDetailPage implements OnInit {
   seq: string = "0";
+  userSeq: any;
   mission: any;
   description: string = "";
 
@@ -18,6 +19,7 @@ export class AnswerDetailPage implements OnInit {
 
   async ngOnInit() {
     this.seq = this.route.snapshot.params['seq'];
+    this.userSeq = localStorage.getItem("seq");
     console.log(this.seq);
   }
 
@@ -49,9 +51,9 @@ export class AnswerDetailPage implements OnInit {
       }).then((result) => {
       if (result.isConfirmed) {
         if(result.value == this.mission.answer) {
-          // this.rest.postAnswerMission(this.seq, "703", "result.value").subscribe((data:any) => {
-          //   console.log(data);
-            if(true) {
+          this.rest.postAnswerMision(this.seq, this.userSeq, result.value).subscribe((data:any) => {
+            console.log(data);
+            if(data.status == "Success") {
               Swal.fire({
                 text: "적립이 완료되었습니다",
                 icon: 'success',
@@ -66,7 +68,7 @@ export class AnswerDetailPage implements OnInit {
                 confirmButtonText: '닫기',
               })
             }
-          // });
+          });
         } else {
           Swal.fire({
             text: "정답이 아닙니다",

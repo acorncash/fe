@@ -68,6 +68,8 @@ export class CaptureDetailPage implements OnInit {
         if(result.value) {
           console.log(result);
           
+          let file: File = result.value;
+
             const data = {
               missionSeq: Number(this.seq),
               userSeq: this.userSeq,

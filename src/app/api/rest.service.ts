@@ -10,6 +10,12 @@ const httpOptions = {
   })
 };
 
+const httpFileOptions = {
+  headers: new HttpHeaders({
+    'Content-Type':  'multipart/form-data'
+  })
+};
+
 @Injectable({
   providedIn: "root"
 })
@@ -69,7 +75,7 @@ export class RestService {
   }
 
   postCaptureMision(jsonModel:string) {
-    return this.http.post(endpoint + 'mission/' + 'captureMission', jsonModel, httpOptions).pipe(
+    return this.http.post(endpoint + 'mission/' + 'captureMission', jsonModel, httpFileOptions).pipe(
       map(this.extractData));
   }
 

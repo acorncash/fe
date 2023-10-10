@@ -31,6 +31,7 @@ export class Tab1Page {
 
   ionViewWillEnter() {
     this.getMisionList();
+    this.dotori = localStorage.getItem("dotori");
   }
 
   navAnswerDetail(seq:number) {  

@@ -54,6 +54,9 @@ export class AnswerDetailPage implements OnInit {
           this.rest.postAnswerMision(this.seq, this.userSeq, result.value).subscribe((data:any) => {
             console.log(data);
             if(data.status == "Success") {
+              let dotori = localStorage.getItem("dotori");
+              localStorage.setItem("dotori", (Number(dotori) + Number(this.mission.dotoli)).toString())
+
               Swal.fire({
                 text: "적립이 완료되었습니다",
                 icon: 'success',

@@ -37,7 +37,7 @@ export class AnswerDetailPage implements OnInit {
   }
 
   openPage(url:string){
-    window.open(url);
+    window.open("https://nid.naver.com/nidlogin.login?svctype=262144&mode=form&url=" + url);
   }
 
   submit(){

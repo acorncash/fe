@@ -59,11 +59,11 @@
 
     <div class="scrollmenu" style="display: flex; align-items: flex-start; overflow-x: auto;">
       <div *ngFor="let mision of misionList" (click)="navAnswerDetail(mision.seq)">
-        <img *ngIf="mision.image == 'M'" src='../../assets/icon/musinsa_icon.png' style="width: 100px; height: 100px; border-radius: 10px;" />
-        <img *ngIf="mision.image == 'N'" src='../../assets/icon/naver_icon.png' style="width: 100px; height: 100px; border-radius: 10px;" />
-        <img *ngIf="mision.image == 'I'" src='../../assets/icon/instagram_icon.png' style="width: 100px; height: 100px; border-radius: 10px;" />
-        <img *ngIf="mision.image == 'C'" src='../../assets/icon/coupang_icon.png' style="width: 100px; height: 100px; border-radius: 10px;" />
-        <img *ngIf="!mision.image" src='../../assets/icon/basic.png' style="width: 100px; height: 100px; border-radius: 10px;" />
+        <img *ngIf="mision.snsType == '0004'" src='../../assets/icon/musinsa_icon.png' style="width: 100px; height: 100px; border-radius: 10px;" />
+        <img *ngIf="mision.snsType == '0001'" src='../../assets/icon/naver_icon.png' style="width: 100px; height: 100px; border-radius: 10px;" />
+        <img *ngIf="mision.snsType == '0002'" src='../../assets/icon/instagram_icon.png' style="width: 100px; height: 100px; border-radius: 10px;" />
+        <img *ngIf="mision.snsType == '0003'" src='../../assets/icon/coupang_icon.png' style="width: 100px; height: 100px; border-radius: 10px;" />
+        <!-- <img *ngIf="!mision.snsType" src='../../assets/icon/basic.png' style="width: 100px; height: 100px; border-radius: 10px;" /> -->
         <div class="ellipsis">
           <span style="font-size: 14px; color: #292B2C; font-weight: bold; margin-bottom: 0;">
             {{mision.title}}
@@ -95,11 +95,11 @@
 
     <div class="scrollmenu" style="display: flex; align-items: flex-start; overflow-x: auto;">
       <div *ngFor="let mision of captureMisionList" (click)="navAnswerDetail(mision.seq)">
-        <!-- <img *ngIf="mision.image == 'M'" src='../../assets/icon/musinsa_icon.png' style="width: 100px; height: 100px; border-radius: 10px;" />
-        <img *ngIf="mision.image == 'N'" src='../../assets/icon/naver_icon.png' style="width: 100px; height: 100px; border-radius: 10px;" />
-        <img *ngIf="mision.image == 'I'" src='../../assets/icon/instagram_icon.png' style="width: 100px; height: 100px; border-radius: 10px;" />
-        <img *ngIf="mision.image == 'C'" src='../../assets/icon/coupang_icon.png' style="width: 100px; height: 100px; border-radius: 10px;" /> -->
-        <img src='../../assets/icon/basic.png' style="width: 100px; height: 100px; border-radius: 10px;" />
+        <img *ngIf="mision.snsType == '0004'" src='../../assets/icon/musinsa_icon.png' style="width: 100px; height: 100px; border-radius: 10px;" />
+        <img *ngIf="mision.snsType == '0001'" src='../../assets/icon/naver_icon.png' style="width: 100px; height: 100px; border-radius: 10px;" />
+        <img *ngIf="mision.snsType == '0002'" src='../../assets/icon/instagram_icon.png' style="width: 100px; height: 100px; border-radius: 10px;" />
+        <img *ngIf="mision.snsType == '0003'" src='../../assets/icon/coupang_icon.png' style="width: 100px; height: 100px; border-radius: 10px;" />
+        <!-- <img src='../../assets/icon/basic.png' style="width: 100px; height: 100px; border-radius: 10px;" /> -->
         <div class="ellipsis">
           <span style="font-size: 14px; color: #292B2C; font-weight: bold; margin-bottom: 0;">
             {{mision.title}}

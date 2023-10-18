@@ -14,7 +14,7 @@
     <div class="item" *ngFor="let item of list" style="margin-bottom: 32px;">
       <div style="display: flex; justify-content: space-between;">
         <span style="font-size: 14px; font-weight: bold; color: #292B2C;">
-          n회차 출금
+          {{datetimeToString(item.createAt)}} 출금
         </span>
         <span style="font-size: 14px; font-weight: bold; color: #F16C1E;">
           {{item.dotoli}}원

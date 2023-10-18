@@ -13,112 +13,62 @@
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <div class="slider">
+  <!-- <div class="slider">
     <div class="slide" id="slide-1">
       <img src="../../assets/image/banner1.png"/>
     </div>
     <div class="slide" id="slide-2">
       <img src="../../assets/image/banner2.png"/>
     </div>
-  </div>
-  
+  </div> -->
+
   <div style="margin:24px 24px 84px 24px">
-    <!-- <div style="width: 100%; height: 120px; background: #eaeaea; border-radius: 10px; margin-bottom: 24px; padding: 8px 12px;">
-      <div style="display: flex; justify-content: space-between;">
-        <b style="margin-top: 10px;">
-          {{name}}
-        </b>
-        <ion-button style="font-size: 12px; --background: #FF9040; --padding-start: 12px; --padding-end:12px; --background-activated: #F16C1E" shape="round" routerLink="/point">
-          도토리 내역
-        </ion-button>
+    <div style="display: flex; line-height: 70%; border-radius: 10px; background: #FF9040; color: white; padding: 12px; margin-bottom: 12px;">
+      <div style="width: 48%;">
+        <ion-icon name="happy-outline"></ion-icon>
+        <span style="color: white; font-size: 14px;">나를 추천한 친구</span>
+
+        <div style="height: 24px;"></div>
+
+        <span style="font-size: 24px; color: white;"><b>0</b></span>
+        <span style="font-size: 14px; color: white;"><b>명</b></span>
+
+        <div style="height: 14px;"></div>
+
+        <span style="font-size: 12px; color: white;">추천내역 확인하기</span>
+        <span style="font-size: 12px; margin-left: 16px; color: white;">></span>
       </div>
 
-      <div style="margin-top: 8px; margin-bottom: 4px; width: 100%; border: 1px solid #fff;"></div>
+      <div style="border-left: solid 1px white; margin-top:6px; height: 104px; margin-right: 12px;"></div>
 
-      <div style="display: flex; justify-content: space-between;">
-        <span style="margin-top: 14px; font-size: 16px;">
-          내 보유 도토리
-        </span>
-        <b style="margin-top: 10px; margin-right: 4px;">
-          {{addComma(dotori)}}
-        </b>
-      </div>
-    </div>
-    
-    <ion-button routerLink="/tabs/tab2" expand="block" style="height: 56px; font-size: 20px; font-weight: bold; border-radius: 10px; --background: #FF9040; --background-activated: #F16C1E">
-      <div>미션하러가기</div>
-    </ion-button> -->
-    <div style="display: flex; margin-bottom: 24px;">
-      <span style="font-size: 18px; font-weight: bold;">
-        정답미션
-      </span>
-      <!-- <span style="margin-left: auto; font-size: 14px; color: #B6B3B3;" routerLink="../tab2">
-        더보기
-      </span> -->
-    </div>
+      <div style="width: 48%;">
+        <ion-icon name="server-outline"></ion-icon>
+        <span style="font-size: 14px; color: white;">추천 포인트</span>
+      
+        <div style="height: 24px;"></div>
 
-    <div class="scrollmenu" style="display: flex; align-items: flex-start; overflow-x: auto;">
-      <div *ngFor="let mision of misionList" (click)="navAnswerDetail(mision.seq)">
-        <img *ngIf="mision.image == 'M'" src='../../assets/icon/musinsa_icon.png' style="width: 100px; height: 100px; border-radius: 10px;" />
-        <img *ngIf="mision.image == 'N'" src='../../assets/icon/naver_icon.png' style="width: 100px; height: 100px; border-radius: 10px;" />
-        <img *ngIf="mision.image == 'I'" src='../../assets/icon/instagram_icon.png' style="width: 100px; height: 100px; border-radius: 10px;" />
-        <img *ngIf="mision.image == 'C'" src='../../assets/icon/coupang_icon.png' style="width: 100px; height: 100px; border-radius: 10px;" />
-        <img *ngIf="!mision.image" src='../../assets/icon/basic.png' style="width: 100px; height: 100px; border-radius: 10px;" />
-        <div class="ellipsis">
-          <span style="font-size: 14px; color: #292B2C; font-weight: bold; margin-bottom: 0;">
-            {{mision.title}}
-          </span>
-        </div>
-        <!-- <span style="font-size: 14px; color: #7F818B; margin-right: 6px;">
-          D-3
-        </span> -->
-        <!-- <img src="../../assets/icon/people.svg"/>
-        <span style="font-size: 14px; color: #7F818B;">
-          {{mision.attendCnt}}
-        </span> -->
-        <p style="font-size: 12px; color: #F16C1E; font-weight: bold; margin-top: 8px;">
-          {{addComma(mision.dotoli)}} 도토리 적립
-        </p>
+        <span style="font-size: 24px; color: white;"><b>0</b></span>
+        <span style="font-size: 14px; color: white;"><b>p</b></span>
+
+        <div style="height: 14px;"></div>
+
+        <span style="font-size: 12px; color: white;">추천해 준 친구 수에 따라 추천 포인트가 쌓입니다</span>
       </div>
     </div>
 
-    <div style="height: 32px;"></div>
-
-    <div style="display: flex; margin-bottom: 24px;">
-      <span style="font-size: 18px; font-weight: bold;">
-        캡처미션
-      </span>
-      <!-- <span style="margin-left: auto; font-size: 14px; color: #B6B3B3;" routerLink="../tab2">
-        더보기
-      </span> -->
+    <div style="border: 1px solid gray; border-radius: 5px; background: white; font-size: 14px; padding: 6px; text-align: center; margin-bottom: 8px;">
+      <span>하루한번 출석체크</span>
+    </div>
+    <div style="border: 1px solid gray; border-radius: 5px; background: white; font-size: 14px; padding: 6px; text-align: center; margin-bottom: 8px;">
+      <ion-icon style="margin-right: 5px;" name="server-outline"></ion-icon>
+      <span>적립내역 확인하기</span>
+    </div>
+    <div style="border: 1px solid gray; border-radius: 5px; background: white; font-size: 14px; padding: 6px; text-align: center; margin-bottom: 8px;">
+      <ion-icon style="margin-right: 5px;" name="receipt-outline"></ion-icon>
+      <span>사용내역 확인하기</span>
     </div>
 
-    <div class="scrollmenu" style="display: flex; align-items: flex-start; overflow-x: auto;">
-      <div *ngFor="let mision of captureMisionList" (click)="navAnswerDetail(mision.seq)">
-        <!-- <img *ngIf="mision.image == 'M'" src='../../assets/icon/musinsa_icon.png' style="width: 100px; height: 100px; border-radius: 10px;" />
-        <img *ngIf="mision.image == 'N'" src='../../assets/icon/naver_icon.png' style="width: 100px; height: 100px; border-radius: 10px;" />
-        <img *ngIf="mision.image == 'I'" src='../../assets/icon/instagram_icon.png' style="width: 100px; height: 100px; border-radius: 10px;" />
-        <img *ngIf="mision.image == 'C'" src='../../assets/icon/coupang_icon.png' style="width: 100px; height: 100px; border-radius: 10px;" /> -->
-        <img src='../../assets/icon/basic.png' style="width: 100px; height: 100px; border-radius: 10px;" />
-        <div class="ellipsis">
-          <span style="font-size: 14px; color: #292B2C; font-weight: bold; margin-bottom: 0;">
-            {{mision.title}}
-          </span>
-        </div>
-        <!-- <span style="font-size: 14px; color: #7F818B; margin-right: 6px;">
-          D-3
-        </span> -->
-        <!-- <img src="../../assets/icon/people.svg"/>
-        <span style="font-size: 14px; color: #7F818B;">
-          {{mision.attendCnt}}
-        </span> -->
-        <p style="font-size: 12px; color: #F16C1E; font-weight: bold; margin-top: 8px;">
-          {{addComma(mision.dotoli)}} 도토리 적립
-        </p>
-      </div>
-    </div>
-    
-    <div style="display: flex; margin: 32px 0 16px 0;">
+    <div style="display: flex; margin: 20px 0 16px 0;">
       <span style="font-size: 18px; font-weight: bold;">
         모바일 교환권
       </span>
@@ -174,5 +124,32 @@
         </p>
       </div>
     </div>
+
+    <img style="margin: 8px 0; border-radius: 10px;" src="../../assets/image/banner3.png"/>
+    <!-- <div style="width: 100%; height: 120px; background: #eaeaea; border-radius: 10px; margin-bottom: 24px; padding: 8px 12px;">
+      <div style="display: flex; justify-content: space-between;">
+        <b style="margin-top: 10px;">
+          {{name}}
+        </b>
+        <ion-button style="font-size: 12px; --background: #FF9040; --padding-start: 12px; --padding-end:12px; --background-activated: #F16C1E" shape="round" routerLink="/point">
+          도토리 내역
+        </ion-button>
+      </div>
+
+      <div style="margin-top: 8px; margin-bottom: 4px; width: 100%; border: 1px solid #fff;"></div>
+
+      <div style="display: flex; justify-content: space-between;">
+        <span style="margin-top: 14px; font-size: 16px;">
+          내 보유 도토리
+        </span>
+        <b style="margin-top: 10px; margin-right: 4px;">
+          {{addComma(dotori)}}
+        </b>
+      </div>
+    </div>
+    
+    <ion-button routerLink="/tabs/tab2" expand="block" style="height: 56px; font-size: 20px; font-weight: bold; border-radius: 10px; --background: #FF9040; --background-activated: #F16C1E">
+      <div>미션하러가기</div>
+    </ion-button> -->
   </div>
 </ion-content>

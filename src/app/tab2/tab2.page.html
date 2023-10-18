@@ -28,12 +28,12 @@
         전체 미션 {{answerMissionList.length}}개
       </p>
       
-      <div *ngFor="let mission of answerMissionList" style="display: flex; margin-bottom: 32px;" (click)="navAnswerDetail(mission.seq)">
-        <img *ngIf="mission.image == 'M'" src='../../assets/icon/musinsa_icon.png' style="width: 65px; height: 65px; border-radius: 10px;" />
-        <img *ngIf="mission.image == 'N'" src='../../assets/icon/naver_icon.png' style="width: 65px; height: 65px; border-radius: 10px;" />
-        <img *ngIf="mission.image == 'I'" src='../../assets/icon/instagram_icon.png' style="width: 65px; height: 65px; border-radius: 10px;" />
-        <img *ngIf="mission.image == 'C'" src='../../assets/icon/coupang_icon.png' style="width: 65px; height: 65px; border-radius: 10px;" />
-        <div style="padding-left: 20px; font-size: 14px; color: #7F818B;">
+      <div *ngFor="let mission of answerMissionList" style="display: flex; margin-bottom: 20px;" (click)="navAnswerDetail(mission.seq)">
+        <img *ngIf="mission.snsType == '0004'" src='../../assets/icon/musinsa_icon.png' style="width: 75px; height: 75px; border-radius: 10px;" />
+        <img *ngIf="mission.snsType == '0001'" src='../../assets/icon/naver_icon.png' style="width: 75x; height: 75px; border-radius: 10px;" />
+        <img *ngIf="mission.snsType == '0002'" src='../../assets/icon/instagram_icon.png' style="width: 75px; height: 75px; border-radius: 10px;" />
+        <img *ngIf="mission.snsType == '0003'" src='../../assets/icon/coupang_icon.png' style="width: 75px; height: 75px; border-radius: 10px;" />
+        <div style="padding-left: 30px; padding-top: 17px; font-size: 14px; color: #7F818B;">
           <p style="margin: 0; font-weight: bold; margin-bottom: 4px; color: #1C1C1D;">
             {{mission.title}}
           </p>
@@ -101,17 +101,20 @@
         전체 미션 {{captureMissionList.length}}개
       </p>
       
-      <div *ngFor="let mission of captureMissionList" style="display: flex; margin-bottom: 32px;" (click)="navCaptureDetail(mission.seq)">
-        <img src='../../assets/icon/basic.png' style="width: 65px; height: 65px; border-radius: 10px;" />
+      <div *ngFor="let mission of captureMissionList" style="display: flex; margin-bottom: 20px;" (click)="navCaptureDetail(mission.seq)">
+        <img *ngIf="mission.snsType == '0004'" src='../../assets/icon/musinsa_icon.png' style="width: 75px; height: 75px; border-radius: 10px;" />
+        <img *ngIf="mission.snsType == '0001'" src='../../assets/icon/naver_icon.png' style="width: 75x; height: 75px; border-radius: 10px;" />
+        <img *ngIf="mission.snsType == '0002'" src='../../assets/icon/instagram_icon.png' style="width: 75px; height: 75px; border-radius: 10px;" />
+        <img *ngIf="mission.snsType == '0003'" src='../../assets/icon/coupang_icon.png' style="width: 75px; height: 75px; border-radius: 10px;" />
         <div style="padding-left: 20px; font-size: 14px; color: #7F818B;">
           <p style="margin: 0; font-weight: bold; margin-bottom: 4px; color: #1C1C1D;">
             {{mission.title}}
           </p>
-          <div class="ellipsis" style="margin-bottom: 4px;">
+          <!-- <div class="ellipsis" style="margin-bottom: 4px;">
             <span>
               {{mission.description}}
             </span>
-          </div>
+          </div> -->
           <!-- <div style="margin-bottom: 4px;">
             <span>
               D-3

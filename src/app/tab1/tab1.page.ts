@@ -11,6 +11,7 @@ export class Tab1Page {
   name:any;
   misionList: any;
   captureMisionList: any;
+  userSeq: any;
 
   constructor(
     private router: Router,
@@ -26,6 +27,7 @@ export class Tab1Page {
 
       this.name = localStorage.getItem("name");
       this.dotori = localStorage.getItem("dotori");
+      this.userSeq = localStorage.getItem("seq");
     });
   }
 
@@ -44,11 +46,11 @@ export class Tab1Page {
 
   getMisionList() {
     this.misionList = [];
-    this.rest.getMisionList("A").subscribe((data:any) => {
+    this.rest.getMisionList("A", this.userSeq).subscribe((data:any) => {
       console.log(data);
       this.misionList = data;
     });
-    this.rest.getMisionList("C").subscribe((data:any) => {
+    this.rest.getMisionList("C", this.userSeq).subscribe((data:any) => {
       console.log(data);
       this.captureMisionList = data;
     });

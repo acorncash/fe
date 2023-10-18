@@ -49,8 +49,8 @@ export class RestService {
     map(this.extractData));
   }
   
-  getMisionList(type:string): Observable<any> {
-    return this.http.get(endpoint + 'mission/missionByType/' + type).pipe(
+  getMisionList(type:string, userSeq:string): Observable<any> {
+    return this.http.get(endpoint + 'mission/missionByType/' + userSeq + "/" + type).pipe(
     map(this.extractData));
   }
   

@@ -11,6 +11,7 @@ export class Tab2Page {
   selectedMenu = "answer";
   answerMissionList: any;
   captureMissionList: any;
+  userSeq: any;
 
   constructor(
     private router: Router,
@@ -18,6 +19,7 @@ export class Tab2Page {
   ) {}
 
   async ngOnInit() {
+    this.userSeq = localStorage.getItem("seq");
   }
   
   ionViewWillEnter() {
@@ -38,13 +40,13 @@ export class Tab2Page {
 
   getMisionList() {
     this.answerMissionList = [];
-    this.rest.getMisionList("A").subscribe((data:any) => {
+    this.rest.getMisionList("A", this.userSeq).subscribe((data:any) => {
       console.log(data);
       this.answerMissionList = data;
     });
 
     this.captureMissionList = [];
-    this.rest.getMisionList("C").subscribe((data:any) => {
+    this.rest.getMisionList("C", this.userSeq).subscribe((data:any) => {
       console.log(data);
       this.captureMissionList = data;
     });

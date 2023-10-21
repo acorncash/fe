@@ -79,6 +79,11 @@ export class RestService {
       map(this.extractData));
   }
 
+  postPressMision(seq:string, userSeq:string) {
+    return this.http.post(endpoint + 'mission/' + 'pressMission/' + seq + "/" + userSeq, "", httpOptions).pipe(
+      map(this.extractData));
+  }
+
   postCaptureMision(jsonModel:string) {
     return this.http.post(endpoint + 'mission/' + 'captureMission', jsonModel, httpFileOptions).pipe(
       map(this.extractData));

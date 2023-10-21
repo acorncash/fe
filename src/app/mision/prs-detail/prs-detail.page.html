@@ -24,25 +24,28 @@
 
   <div style="padding: 10px 20px;">
     <p style="font-size: 18px; font-weight: bold; margin: 4px 0;">
-      제로페이 유튜브 퀴즈
+      {{mission?.title}}
     </p>
     <span style="font-size: 16px; color: #7F818B;">
-      제로페이의 새로운 서비스 OOO는 과연?
+      {{mission?.url}}
     </span>
 
     <p style="font-size: 12px; color: #555555;">
-      Lorem ipsum, or lipsum as it is sometimes known, is dummy text used in laying out print, graphic or web designs.
-      The passage is attributed to an unknown typesetter in the 15th century who is thought to have scrambled parts
-      of Cicero's De Finibus Bonorumet Malorum for use in a type specimen book. It usually begins with:
+      {{description}}
     </p>
+
+    <div style="text-align: center;">
+      <ion-button shape="round" (click)="startMission()" style="height: 42px; font-size: 16px; font-weight: bold; border-radius: 100%; --background:#FF9040; --background-activated: #F16C1E">
+        <div>시작하기</div>
+      </ion-button>
+    </div>
   </div>
-  <!-- <iframe src="https://www.instagram.com/p/CyJAWsLLZrE/"></iframe> -->
 </ion-content>
 
 <ion-footer>
   <div style="padding: 10px 20px;">
-    <ion-button expand="block" style="height: 56px; font-size: 20px; font-weight: bold; border-radius: 10px; --background: linear-gradient(180deg, #FF9040 0%, #F16C1E 100%); --background-activated: #F16C1E">
-      미션 참여하고 300 도토리 받기
+    <ion-button expand="block" (click)="requestMission()" style="height: 56px; font-size: 20px; font-weight: bold; border-radius: 10px; --background: linear-gradient(180deg, #FF9040 0%, #F16C1E 100%); --background-activated: #F16C1E">
+      적립요청하기
     </ion-button>
   </div>
 </ion-footer>

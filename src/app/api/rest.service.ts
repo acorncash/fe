@@ -34,19 +34,9 @@ export class RestService {
     map(this.extractData));
   }
 
-  getKakao(): Observable<any> {
-    return this.http.get("http://localhost:8080/api/" + "user/" + 'kakao').pipe(
-    map(this.extractData));
-  }
-
-  getKakaoUser(socialKey:string): Observable<any> {
-    return this.http.get("https://kapi.kakao.com/v2/user/me", {
-      headers: new HttpHeaders({
-        'Authorization':  `Bearer ${socialKey}`
-         // property_keys: "kakao_account.email"
-      })
-    }).pipe(
-    map(this.extractData));
+  getKakaoLogin(code:string) {
+    return this.http.get(endpoint + `user/kakao?code=${code}`).pipe(
+      map(this.extractData));
   }
   
   getMisionList(type:string, userSeq:string): Observable<any> {

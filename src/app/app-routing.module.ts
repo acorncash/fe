@@ -77,6 +77,10 @@ const routes: Routes = [
     path: 'callback',
     loadChildren: () => import('./join/callback/callback.module').then( m => m.CallbackPageModule)
   },
+  {
+    path: 'login/kakao',
+    loadChildren: () => import('./join/kakao/kakao.module').then( m => m.KakaoPageModule)
+  }
 ];
 @NgModule({
   imports: [

@@ -62,36 +62,37 @@
   <div *ngIf="selectedMenu == 'normal'">
     <div style="padding: 0px 24px;">
       <p style="font-size: 14px; margin-bottom: 24px;">
-        전체 미션 0개
+        전체 미션 {{pressMissionList.length}}개
       </p>
       
-      <!-- *ngFor="let number of [0,1,2,3,4]" (click)="navAnswerDetail(number)" -->
-      <!-- <div style="display: flex; margin-bottom: 32px;">
-        <div style="width: 90px; height: 90px; border-radius: 10px; background: #B6B3B3;">
-        </div>
+      <div *ngFor="let mission of pressMissionList" style="display: flex; margin-bottom: 32px;" (click)="navPressDetail(mission.seq)">
+        <img *ngIf="mission.snsType == '0004'" src='../../assets/icon/musinsa_icon.png' style="width: 100px; height: 100px; border-radius: 10px;" />
+        <img *ngIf="mission.snsType == '0001'" src='../../assets/icon/naver_icon.png' style="width: 100px; height: 100px; border-radius: 10px;" />
+        <img *ngIf="mission.snsType == '0002'" src='../../assets/icon/instagram_icon.png' style="width: 100px; height: 100px; border-radius: 10px;" />
+        <img *ngIf="mission.snsType == '0003'" src='../../assets/icon/coupang_icon.png' style="width: 100px; height: 100px; border-radius: 10px;" />
         <div style="padding-left: 20px; font-size: 14px; color: #7F818B;">
           <p style="margin: 0; font-weight: bold; margin-bottom: 4px; color: #1C1C1D;">
-            Title
+            {{mission.title}}
           </p>
           <div class="ellipsis" style="margin-bottom: 4px;">
             <span>
-              Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet
+              {{mission.description}}
             </span>
           </div>
-          <div style="margin-bottom: 4px;">
+          <!-- <div style="margin-bottom: 4px;">
             <span>
               D-3
             </span>
             <img src="../../assets/icon/people.svg"/>
             <span>
-              100
+              {{mission.attendCnt}}
             </span>
-          </div>
+          </div> -->
           <p style="margin: 0; color: #F16C1E; font-weight: bold;">
-            0,000 도토리 적립
+            {{addComma(mission.dotoli)}} 도토리 적립
           </p>
         </div>
-      </div> -->
+      </div>
     </div>
   </div>
 

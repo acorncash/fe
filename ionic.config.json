@@ -1,10 +1,14 @@
 {
   "name": "dotori-app",
   "integrations": {
-    "capacitor": {
-      "enabled": false
-    },
+    "capacitor": {},
     "cordova": {}
   },
-  "type": "angular"
+  "type": "angular",
+  "proxies": [
+    {
+      "path": "/place",
+      "proxyUrl": "https://m.place.naver.com"
+    }
+  ]
 }

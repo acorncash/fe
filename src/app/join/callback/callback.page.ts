@@ -36,12 +36,12 @@ export class CallbackPage implements OnInit {
       .then((res) => {
         console.log(res);
         // kakao 사용자정보 가져오기
-        this.rest.getKakaoUser(res.data.access_token).subscribe((data:any) => {
-          console.log(data);
-          this.kakaoUserData = data;
+        // this.rest.getKakaoUser(res.data.access_token).subscribe((data:any) => {
+        //   console.log(data);
+        //   this.kakaoUserData = data;
 
-          this.getLogin(this.kakaoUserData.id, res.data.refresh_token)
-        });
+        //   this.getLogin(this.kakaoUserData.id, res.data.refresh_token)
+        // });
       });
   }
 

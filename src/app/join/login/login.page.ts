@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { environment } from '../../../environments/environment';
 import { Router } from '@angular/router';
 import { RestService } from 'src/app/api/rest.service';
+import { InAppBrowser, InAppBrowserOptions, InAppBrowserObject } from '@ionic-native/in-app-browser/ngx';
+import axios from "axios";
+
 declare let Kakao : any;
 @Component({
   selector: 'app-login',
@@ -10,9 +12,13 @@ declare let Kakao : any;
 })
 export class LoginPage implements OnInit {
   host:any;
+  REST_API_KEY = "b2f9c8bcb75d5dc1e65936bcffc386d1";
+  REDIRECT_URI = 'http://localhost:8100/login/kakao';
+  
   constructor(
     private router: Router,
     private rest: RestService,
+    private inAppBrowser: InAppBrowser
   ) { 
   }
 
@@ -21,51 +27,31 @@ export class LoginPage implements OnInit {
   }
 
   kakao() {
-    Kakao.Auth.authorize({
-      redirectUri: 'http://localhost:8080/api/user/kakao',
+    const options:InAppBrowserOptions = {
+      location: 'yes',
+      zoom: 'no',
+    };
+
+    let browser = this.inAppBrowser.create(`https://kauth.kakao.com/oauth/authorize?client_id=${this.REST_API_KEY}&redirect_uri=${this.REDIRECT_URI}&response_type=code&scope=account_email`, '_blank', options);
+
+    browser.on('loadstop').subscribe(() => {
+      browser.executeScript({code: `
+      let message = {name: localStorage.getItem('name'), seq: localStorage.getItem('seq'), dotori: localStorage.getItem('dotori')}
+      webkit.messageHandlers.cordova_iab.postMessage(JSON.stringify(message));
+      `})
     })
 
-    this.rest.getKakao().subscribe((data:any) => {
-      console.log(data);
-      // this.loginData = data;
+    browser.on('message').subscribe((val) => {
+      localStorage.clear()
 
-      // if(this.loginData != null) {
-      //   //login Success
-      //   localStorage.setItem("name", this.loginData.name)
-      //   localStorage.setItem("dotori", this.loginData.dotoli)
-      //   localStorage.setItem("seq", this.loginData.seq)
-      //   window.location.replace('/tabs/tab1');
-      // } else {
-      //   const data = {
-      //     socialKey: this.kakaoUserData.id.toString(),
-      //     refreshToken: refreshToken,
-      //     id: "",
-      //     password: "",
-      //     name: this.kakaoUserData.id.toString(),
-      //     nickname: this.kakaoUserData.id.toString(),
-      //     phoneNumber: "",
-      //     email: "",
-      //   }
-    
-      //   var json = JSON.stringify(data) ;
-      //   console.log(json);
+      console.log(val)
+      localStorage.setItem('name', val.data.name)
+      localStorage.setItem('seq', val.data.seq)
+      localStorage.setItem('dotori', val.data.dotori)
 
-      //   this.rest.postJoin(json).subscribe((data:any) => {
-      //     console.log(data);
-      //     if(data.status == "Success") {
-      //       this.getLogin(socialKey, refreshToken);
-      //     }
-      //   });
-      // }
-    });
+      window.location.href = ''
 
-    //   const REST_API_KEY = "b2f9c8bcb75d5dc1e65936bcffc386d1";
-    //   let REDIRECT_URI = "";
-
-    //   REDIRECT_URI = "http://" + window.location.host +"*/callback";
-
-    //   const KAKAO_AUTH_URL = `https://kauth.kakao.com/oauth/authorize?response_type=code&client_id=${REST_API_KEY}&redirect_uri=${REDIRECT_URI}`;
-      
-    //   window.location.replace(`${KAKAO_AUTH_URL}`);
+      browser.close()
+    })
   }
 }

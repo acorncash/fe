@@ -21,15 +21,12 @@
     "@angular/platform-browser": "^16.0.0",
     "@angular/platform-browser-dynamic": "^16.0.0",
     "@angular/router": "^16.0.0",
-    "@capacitor/app": "5.0.6",
-    "@capacitor/core": "5.2.3",
-    "@capacitor/haptics": "5.0.6",
-    "@capacitor/keyboard": "5.0.6",
-    "@capacitor/status-bar": "5.0.6",
+    "@ionic-native/in-app-browser": "^5.36.0",
     "@ionic/angular": "^7.0.0",
     "@ionic/cordova-builders": "^10.0.0",
     "axios": "^1.5.1",
     "cheerio": "^1.0.0-rc.12",
+    "cordova-plugin-inappbrowser": "^5.0.0",
     "ionicons": "^7.0.0",
     "rxjs": "~7.8.0",
     "sweetalert2": "^11.6.13",
@@ -86,7 +83,8 @@
       "cordova-plugin-device": {},
       "cordova-plugin-splashscreen": {},
       "cordova-plugin-ionic-webview": {},
-      "cordova-plugin-ionic-keyboard": {}
+      "cordova-plugin-ionic-keyboard": {},
+      "cordova-plugin-inappbrowser": {}
     },
     "platforms": [
       "android"

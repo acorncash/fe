@@ -1,15 +1,15 @@
 <ion-header [translucent]="true">
-  <ion-toolbar style="--background:#fff; --border-width: 0;">
+  <ion-toolbar style="--background:#fff; --border-width: 0; margin:0 24px 0 24px">
     <ion-buttons slot="start">
       <img style="margin-right: 4px;" src="../../assets/icon/dotori_icon.svg"/>
       <span style="font-size:16px; color:#F16C1E; font-weight: bold;">
         {{addComma(dotori)}}
       </span>
     </ion-buttons>
-    <ion-title>
-      <img src="../../assets/icon/dotori_cash.svg"/>
-    </ion-title>
   </ion-toolbar>
+  <ion-title style="z-index: 999;">
+    <img src="../../assets/icon/dotori_cash.svg"/>
+  </ion-title>
 </ion-header>
 
 <ion-content [fullscreen]="true">
@@ -22,8 +22,8 @@
     </div>
   </div> -->
 
-  <div style="margin:24px 24px 84px 24px">
-    <div style="width: 100%; display: flex; line-height: 70%; border-radius: 10px; background: #FF9040; color: white; padding: 12px; margin-bottom: 12px;">
+  <div style="margin: 4px 24px 84px 24px">
+    <div style="width: 100%; display: flex; line-height: 70%; border-radius: 10px; background: #FF9040; color: white; padding: 20px; margin-bottom: 12px;">
       <div style="width: 48%;">
         <ion-icon style="float: left; margin-right: 2px;" name="happy-outline"></ion-icon>
         <span style="color: white; font-size: 14px;">나를 추천한 친구</span>
@@ -56,14 +56,14 @@
       </div>
     </div>
 
-    <div style="border: 1px solid gray; border-radius: 5px; background: white; font-size: 14px; padding: 6px; text-align: center; margin-bottom: 8px;">
+    <div style="border: 1px solid gray; border-radius: 5px; background: white; font-size: 14px; padding: 8px; text-align: center; margin-bottom: 8px;">
       <span>하루한번 출석체크</span>
     </div>
-    <div style="border: 1px solid gray; border-radius: 5px; background: white; font-size: 14px; padding: 6px; text-align: center; margin-bottom: 8px;">
+    <div style="border: 1px solid gray; border-radius: 5px; background: white; font-size: 14px; padding: 8px; text-align: center; margin-bottom: 8px;">
       <ion-icon style="margin-right: 5px;" name="server-outline"></ion-icon>
       <span>적립내역 확인하기</span>
     </div>
-    <div style="border: 1px solid gray; border-radius: 5px; background: white; font-size: 14px; padding: 6px; text-align: center; margin-bottom: 8px;">
+    <div style="border: 1px solid gray; border-radius: 5px; background: white; font-size: 14px; padding: 8px; text-align: center; margin-bottom: 8px;">
       <ion-icon style="margin-right: 5px;" name="receipt-outline"></ion-icon>
       <span>사용내역 확인하기</span>
     </div>

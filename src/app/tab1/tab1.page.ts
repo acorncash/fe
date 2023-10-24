@@ -11,6 +11,7 @@ export class Tab1Page {
   name:any;
   misionList: any;
   captureMisionList: any;
+  userSeq: any;
 
   constructor(
     private router: Router,
@@ -18,15 +19,18 @@ export class Tab1Page {
   ) {}
   
   ngOnInit() {
-    this.rest.getLogin("3047198451", "000000").subscribe((data:any) => {
-      console.log(data);
-      localStorage.setItem("name", data.nickname)
-      localStorage.setItem("dotori", data.dotoli)
-      localStorage.setItem("seq", data.seq)
-
-      this.name = localStorage.getItem("name");
-      this.dotori = localStorage.getItem("dotori");
-    });
+    /* if (this.userSeq !== undefined) {
+      this.rest.getLogin("3047198451", "000000").subscribe((data:any) => {
+        console.log(data);
+        localStorage.setItem("name", data.nickname)
+        localStorage.setItem("dotori", data.dotoli)
+        localStorage.setItem("seq", data.seq)
+  
+        this.name = localStorage.getItem("name");
+        this.dotori = localStorage.getItem("dotori");
+        this.userSeq = localStorage.getItem("seq");
+      });
+    } */
   }
 
   ionViewWillEnter() {
@@ -44,11 +48,11 @@ export class Tab1Page {
 
   getMisionList() {
     this.misionList = [];
-    this.rest.getMisionList("A").subscribe((data:any) => {
+    this.rest.getMisionList("A", this.userSeq).subscribe((data:any) => {
       console.log(data);
       this.misionList = data;
     });
-    this.rest.getMisionList("C").subscribe((data:any) => {
+    this.rest.getMisionList("C", this.userSeq).subscribe((data:any) => {
       console.log(data);
       this.captureMisionList = data;
     });

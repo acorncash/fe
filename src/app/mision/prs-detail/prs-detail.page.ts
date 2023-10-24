@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import axios from 'axios';
-import cheerio from 'cheerio';
-import { children } from 'cheerio/lib/api/traversing';
+import { RestService } from 'src/app/api/rest.service';
+import { InAppBrowser, InAppBrowserOptions, InAppBrowserObject } from '@ionic-native/in-app-browser/ngx';
 
 @Component({
   selector: 'app-prs-detail',
@@ -10,49 +9,94 @@ import { children } from 'cheerio/lib/api/traversing';
   styleUrls: ['./prs-detail.page.scss'],
 })
 export class PrsDetailPage implements OnInit {
-  seq: number = 0;
+  seq: string = "1003";
+  mission: any;
+  userSeq: any;
+  description: string = "";
+  browser!: InAppBrowserObject;
+  result: Boolean = false;
+
   constructor(
-    private router: Router,
-    private route: ActivatedRoute,) { }
+    private rest: RestService,
+    private route: ActivatedRoute,
+    private inAppBrowser: InAppBrowser) { }
 
   async ngOnInit() {
     this.seq = this.route.snapshot.params['seq'];
-    console.log(this.seq);
+    this.userSeq = localStorage.getItem("seq");
+  }
+ 
+  ionViewWillEnter() {
+    this.getMissionDetail();
+  }
 
-      // // ❶ HTML 로드하기
-      // const resp1 = await axios.get(
-      //   'https://pcmap.place.naver.com/restaurant/1815321561/home?from=map&fromPanelNum=2&x=127.0888519&y=37.5960637&timestamp=202310112021'
-      // );
-    
-      // const loadData1 = cheerio.load(resp1.data); // ❷ HTML을 파싱하고 DOM 생성하기
-      // const elements1 = loadData1('.Mq0QC>path');    // ❸ CSS 셀렉터로 원하는 요소 찾기
-      // console.log(elements1);
+  getMissionDetail() {
+    this.mission = [];
+    this.rest.getMisionDetail(this.seq).subscribe((data:any) => {
+      this.mission = data;
+      this.description = this.mission.description.toString().replace(/\\r\\n|\\n|\\r/gm,"\r\n");
+    });
+  }
+
+  startMission() {
+    const options:InAppBrowserOptions = {
+      location: 'yes',
+      zoom: 'no',
+    };
+
+  const browser = this.inAppBrowser.create(this.mission.url, '_blank', options);
+  browser.on('loadstop').subscribe(() => {
+    browser.executeScript({code: `
+    setTimeout(() => {
+      var allLinks = document.querySelectorAll('a'); // 모든 링크 가져오기
+      var savedLinksArray = [];
       
-      // // ➍ 찾은 요소를 순회하면서 요소가 가진 텍스트를 출력하기
-      // elements1.each((idx, el) => {
-      //   // ❺ text() 메서드를 사용하기 위해 Node 객체인 el을 $로 감싸서 cheerio 객체로 변환
-      //   const a = el.attribs;
-      //   const b = JSON.stringify(a);
-      //   const c = JSON.parse(b);
-      //   console.log(a);
-      //   console.log(b);
-      //   console.log(c.d);
-      // });
+      for (var i = 0; i < allLinks.length; i++) {
+        var link = allLinks[i];
+        if (link.textContent.indexOf('저장') !== -1) { // '저장'을 포함한 링크 찾기
+          savedLinksArray.push(link);
+          link.style.border = '2px solid red'; // 테두리 빨간색으로 변경
+        }
+      }
+    }, 1500)
+    `})
 
-      // // ❶ HTML 로드하기
-      // const resp = await axios.get(
-      //   'https://www.instagram.com/p/CyJAWsLLZrE/'
-      // );
-    
-      // const loadData = cheerio.load(resp.data); // ❷ HTML을 파싱하고 DOM 생성하기
-      // const elements = loadData('.xp7jhwk');    // ❸ CSS 셀렉터로 원하는 요소 찾기
-      // console.log(resp.data);
-      // console.log(elements);
-      // // ➍ 찾은 요소를 순회하면서 요소가 가진 텍스트를 출력하기
-      // elements.each((idx, el) => {
-      //   // ❺ text() 메서드를 사용하기 위해 Node 객체인 el을 $로 감싸서 cheerio 객체로 변환
-      //   console.log(el);
-      // });
+    browser.executeScript({code: `
+    setInterval(() => {
+      var allLinks = document.querySelectorAll('a'); // 모든 링크 가져오기
+      var result = false;
+      
+      for (var i = 0; i < allLinks.length; i++) {
+        var link = allLinks[i];
+        if (link.textContent.indexOf('저장') !== -1) { // '저장'을 포함한 링크 찾기
+          result = link.getAttribute('aria-pressed')
+
+          let message = {result: result}
+          webkit.messageHandlers.cordova_iab.postMessage(JSON.stringify(message));          
+        }
+      }
+    }, 300)
+    `})
+  })
+
+  browser.on('message').subscribe((val) => {
+    this.result = val.data.result === 'true'
+  })
+  }
+
+  requestMission() {
+    if (this.result == true) {
+      this.rest.postPressMision(this.seq, this.userSeq).subscribe((data:any) => {
+        console.log(data);
+        if(data.status == "Success") {
+          let dotori = localStorage.getItem("dotori");
+          localStorage.setItem("dotori", (Number(dotori) + Number(this.mission.dotoli)).toString())
+          alert('적립되었습니다.')
+        }
+      });
+    } else {
+      alert('미션을 수행한 뒤 다시 시도해 주세요.')
+    }
   }
 
 }

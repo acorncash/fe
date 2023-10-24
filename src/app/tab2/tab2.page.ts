@@ -11,6 +11,8 @@ export class Tab2Page {
   selectedMenu = "answer";
   answerMissionList: any;
   captureMissionList: any;
+  userSeq: any;
+  pressMissionList: any;
 
   constructor(
     private router: Router,
@@ -18,6 +20,7 @@ export class Tab2Page {
   ) {}
 
   async ngOnInit() {
+    this.userSeq = localStorage.getItem("seq");
   }
   
   ionViewWillEnter() {
@@ -36,17 +39,26 @@ export class Tab2Page {
     this.router.navigateByUrl('/capture-detail/' + seq);
   }
 
+  navPressDetail(seq:number) {  
+    this.router.navigateByUrl('/prs-detail/' + seq);
+  }
+
   getMisionList() {
     this.answerMissionList = [];
-    this.rest.getMisionList("A").subscribe((data:any) => {
+    this.rest.getMisionList("A", this.userSeq).subscribe((data:any) => {
       console.log(data);
       this.answerMissionList = data;
     });
 
     this.captureMissionList = [];
-    this.rest.getMisionList("C").subscribe((data:any) => {
+    this.rest.getMisionList("C", this.userSeq).subscribe((data:any) => {
       console.log(data);
       this.captureMissionList = data;
+    });
+
+    this.pressMissionList = [];
+    this.rest.getMisionList("P", this.userSeq).subscribe((data:any) => {
+      this.pressMissionList = data;
     });
   }
 
@@ -54,3 +66,4 @@ export class Tab2Page {
     return string.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
   }
 }
+ 

@@ -20,4 +20,8 @@ export class Tab4Page {
   navDetail(seq:number) {  
     this.router.navigateByUrl('/coupon-detail/' + seq);
   }
+
+  notProvided() {
+    alert("서비스 준비중입니다");
+  }
 }

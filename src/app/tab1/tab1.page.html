@@ -56,14 +56,14 @@
       </div>
     </div>
 
-    <div style="border: 1px solid gray; border-radius: 5px; background: white; font-size: 14px; padding: 8px; text-align: center; margin-bottom: 8px;">
+    <div (click)="notProvided()" style="border: 1px solid gray; border-radius: 5px; background: white; font-size: 14px; padding: 8px; text-align: center; margin-bottom: 8px;">
       <span>하루한번 출석체크</span>
     </div>
-    <div style="border: 1px solid gray; border-radius: 5px; background: white; font-size: 14px; padding: 8px; text-align: center; margin-bottom: 8px;">
+    <div (click)="pointList()" style="border: 1px solid gray; border-radius: 5px; background: white; font-size: 14px; padding: 8px; text-align: center; margin-bottom: 8px;">
       <ion-icon style="margin-right: 5px;" name="server-outline"></ion-icon>
       <span>적립내역 확인하기</span>
     </div>
-    <div style="border: 1px solid gray; border-radius: 5px; background: white; font-size: 14px; padding: 8px; text-align: center; margin-bottom: 8px;">
+    <div (click)="notProvided()" style="border: 1px solid gray; border-radius: 5px; background: white; font-size: 14px; padding: 8px; text-align: center; margin-bottom: 8px;">
       <ion-icon style="margin-right: 5px;" name="receipt-outline"></ion-icon>
       <span>사용내역 확인하기</span>
     </div>
@@ -79,7 +79,7 @@
 
     <div class="scrollmenu" style="display: flex; align-items: flex-start; gap: 13px; overflow-x: auto;">
       <!-- *ngFor="let number of [0,1,2,3,4]" (click)="navCouponDetail(number)" -->
-      <div>
+      <div (click)="notProvided()">
         <img style="width: 120px; height: 120px; border-radius: 10px;" src="../../assets/image/gift_4.png">
         <p style="font-size: 12px; color: #7F818B; margin-bottom: 0;">
           투썸플레이스
@@ -94,7 +94,7 @@
         </p>
       </div>
 
-      <div>
+      <div (click)="notProvided()">
         <img style="width: 120px; height: 120px; border-radius: 10px;" src="../../assets/image/gift_5.png">
         <p style="font-size: 12px; color: #7F818B; margin-bottom: 0;">
           애니베이크
@@ -109,7 +109,7 @@
         </p>
       </div>
 
-      <div>
+      <div (click)="notProvided()">
         <img style="width: 120px; height: 120px; border-radius: 10px;" src="../../assets/image/gift_2.png">
         <p style="font-size: 12px; color: #7F818B; margin-bottom: 0;">
           투썸플레이스

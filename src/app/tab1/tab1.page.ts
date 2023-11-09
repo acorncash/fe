@@ -61,4 +61,12 @@ export class Tab1Page {
   addComma(string:any) {
     return string.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
   }
+
+  notProvided() {
+    alert("서비스 준비중입니다");
+  }
+
+  pointList() {
+    this.router.navigateByUrl('/point');
+  }
 }

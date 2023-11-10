@@ -17,7 +17,9 @@ export class Tab2Page {
   constructor(
     private router: Router,
     private rest: RestService,
-  ) {}
+  ) {
+    this.userSeq = localStorage.getItem("seq");
+  }
 
   async ngOnInit() {
     this.userSeq = localStorage.getItem("seq");

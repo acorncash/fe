@@ -15,4 +15,8 @@ export class Tab3Page {
   navDetail(seq:number) {  
     this.router.navigateByUrl('/prs-detail/' + seq);
   }
+
+  notProvided() {
+    alert("서비스 준비중입니다");
+  }
 }

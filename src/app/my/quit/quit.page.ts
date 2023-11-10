@@ -12,4 +12,7 @@ export class QuitPage implements OnInit {
   ngOnInit() {
   }
 
+  notProvided() {
+    alert("서비스 준비중입니다");
+  }
 }

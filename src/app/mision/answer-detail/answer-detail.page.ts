@@ -35,9 +35,9 @@ export class AnswerDetailPage implements OnInit {
       this.description = this.mission.description.toString().replace(/\\r\\n|\\n|\\r/gm,"\r\n");
     });
   }
-
-  openPage(url:string){
-    window.open("https://nid.naver.com/nidlogin.login?url=" + url);
+  
+  openPage(keyword:string, price:string, mall:string){
+    window.open("https://nid.naver.com/nidlogin.login?url=https://msearch.shopping.naver.com/search/all?query="+keyword+"%26maxPrice=" + price + "%26minPrice=" + price + "%26mall=" + mall);
   }
 
   submit(){

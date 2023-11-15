@@ -83,4 +83,9 @@ export class RestService {
     return this.http.post(endpoint + 'withdraw/' + 'addWithdraw', jsonModel, httpOptions).pipe(
       map(this.extractData));
   }
+
+  postDelete(userSeq:string) {
+    return this.http.post(endpoint + 'user/' + 'uesrDelete/' + userSeq, httpOptions).pipe(
+      map(this.extractData));
+  }
 }

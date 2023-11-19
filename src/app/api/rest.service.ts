@@ -64,6 +64,11 @@ export class RestService {
       map(this.extractData));
   }
 
+  postAttendanceCheck(userSeq:string): Observable<any> {
+    return this.http.post(endpoint + 'dotoli/' + "attendanceCheck/" + userSeq, "", httpOptions).pipe(
+    map(this.extractData));
+  }
+
   postAnswerMision(seq:string, userSeq:string, answer:string) {
     return this.http.post(endpoint + 'mission/' + 'answerMission/' + seq + "/" + userSeq + "/" + answer, "", httpOptions).pipe(
       map(this.extractData));

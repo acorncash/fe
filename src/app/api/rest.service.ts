@@ -38,6 +38,11 @@ export class RestService {
     return this.http.get(endpoint + `user/kakao?code=${code}`).pipe(
       map(this.extractData));
   }
+
+  getNaverLogin(code:string, state:string) {
+    return this.http.get(endpoint + `user/naver?code=${code}&state=${state}`).pipe(
+      map(this.extractData));
+  }
   
   getMisionList(type:string, userSeq:string): Observable<any> {
     return this.http.get(endpoint + 'mission/missionByType/' + userSeq + "/" + type).pipe(

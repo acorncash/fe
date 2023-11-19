@@ -80,6 +80,10 @@ const routes: Routes = [
   {
     path: 'login/kakao',
     loadChildren: () => import('./join/kakao/kakao.module').then( m => m.KakaoPageModule)
+  },
+  {
+    path: 'login/naver',
+    loadChildren: () => import('./join/naver/naver.module').then( m => m.NaverPageModule)
   }
 ];
 @NgModule({

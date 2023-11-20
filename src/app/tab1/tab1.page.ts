@@ -43,7 +43,7 @@ export class Tab1Page {
     } */
   }
 
-  ionViewWillEnter() {
+  IonViewDidEnter() {
     this.getMisionList();
     this.dotori = localStorage.getItem("dotori");
   }

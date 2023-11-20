@@ -15,6 +15,7 @@ export class AnswerDetailPage implements OnInit {
 
   constructor(
     private rest: RestService,
+    private router: Router,
     private route: ActivatedRoute,) { }
 
   async ngOnInit() {
@@ -63,6 +64,7 @@ export class AnswerDetailPage implements OnInit {
                 heightAuto: false,
                 confirmButtonText: '닫기',
               })
+              this.router.navigateByUrl('/tabs/tab2');
             } else {
               Swal.fire({
                 text: "적립에 실패했습니다",

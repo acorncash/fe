@@ -7,9 +7,6 @@ import { RestService } from 'src/app/api/rest.service';
   templateUrl: './naver.page.html',
 })
 export class NaverPage implements OnInit {
-  private code!: string;
-  private state!: string;
-  data: any;
   constructor(private route:ActivatedRoute,
     private restService: RestService) {
 
@@ -17,22 +14,16 @@ export class NaverPage implements OnInit {
 
   ngOnInit(): void {
       this.route.queryParams.subscribe(params => {
-        this.code = params['code']
-        this.state = params['state']
+        this.login(params['code'], params['state'])
       })
-
-      this.login()
   }
 
-  login() {
-    this.restService.getNaverLogin(this.code, this.state).subscribe(data => {
-      this.data = data;
-
+  login(code: string, state: string) {
+    this.restService.getNaverLogin(code, state).subscribe(data => {
       localStorage.clear()
-      
-      localStorage.setItem('name', data.nickname)
-      localStorage.setItem('seq', data.seq)
-      localStorage.setItem('dotori', data.dotoli)
+
+      let message = {name: data.nickname, seq: data.seq, dotori: data.dotoli}
+      window.webkit.messageHandlers.cordova_iab.postMessage(JSON.stringify(message))
     })
   }
 }

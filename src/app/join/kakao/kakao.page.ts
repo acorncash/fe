@@ -7,8 +7,6 @@ import { RestService } from 'src/app/api/rest.service';
   templateUrl: './kakao.page.html',
 })
 export class KakaoPage implements OnInit {
-  private code!: string;
-  data: any;
   constructor(private route:ActivatedRoute,
     private restService: RestService) {
 
@@ -16,21 +14,16 @@ export class KakaoPage implements OnInit {
 
   ngOnInit(): void {
       this.route.queryParams.subscribe(params => {
-        this.code = params['code']
+        this.login(params['code'])
       })
-
-      this.login()
   }
 
-  login() {
-    this.restService.getKakaoLogin(this.code).subscribe(data => {
-      this.data = data;
-
+  login(code: string) {
+    this.restService.getKakaoLogin(code).subscribe(data => {
       localStorage.clear()
       
-      localStorage.setItem('name', data.nickname)
-      localStorage.setItem('seq', data.seq)
-      localStorage.setItem('dotori', data.dotoli)
+      let message = {name: data.nickname, seq: data.seq, dotori: data.dotoli}
+      window.webkit.messageHandlers.cordova_iab.postMessage(JSON.stringify(message))
     })
   }
 }

@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { RestService } from 'src/app/api/rest.service';
+import Swal from 'sweetalert2';
+
 @Component({
   selector: 'app-tab1',
   templateUrl: 'tab1.page.html',
@@ -77,4 +79,29 @@ export class Tab1Page {
   pointList() {
     this.router.navigateByUrl('/point');
   }
+  
+  attendanceCheck() {
+    this.rest.postAttendanceCheck(this.userSeq).subscribe((data:any) => {
+      console.log(data);
+        if(data.status == "Success") {
+          let dotori = localStorage.getItem("dotori");
+          localStorage.setItem("dotori", (Number(dotori) + Number(1)).toString())
+
+          Swal.fire({
+            text: "출석체크를 완료하여 1 포인트가 적립되었습니다!",
+            icon: 'success',
+            heightAuto: false,
+            confirmButtonText: '닫기',
+          })
+        } else {
+          Swal.fire({
+            text: "출석체크는 하루에 한번만 가능합니다",
+            icon: 'error',
+            heightAuto: false,
+            confirmButtonText: '닫기',
+          })
+        }
+    });
+  }
+  
 }

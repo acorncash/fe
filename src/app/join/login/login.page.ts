@@ -14,7 +14,7 @@ export class LoginPage implements OnInit {
   host:any;
   KAKAO_REST_API_KEY = "b2f9c8bcb75d5dc1e65936bcffc386d1";
   KAKAO_REDIRECT_URI = 'http://localhost:8100/login/kakao';
-  NAVER_REST_API_KEY = "b2f9c8bcb75d5dc1e65936bcffc386d1";
+  NAVER_REST_API_KEY = "JHEetUu7mEdTxaMm1paO";
   NAVER_REDIRECT_URI = 'http://localhost:8100/login/naver';
   
   constructor(

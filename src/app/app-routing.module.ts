@@ -38,6 +38,10 @@ const routes: Routes = [
     loadChildren: () => import('./coupon/detail/detail.module').then( m => m.DetailPageModule)
   },
   {
+    path: 'adpopcorn-detail/:campaignKey',
+    loadChildren: () => import('./mision/adpopcorn-detail/adpopcorn-detail.module').then( m => m.AdpopcornDetailPageModule)
+  },
+  {
     path: 'point',
     loadChildren: () => import('./my/point/point.module').then( m => m.PointPageModule)
   },

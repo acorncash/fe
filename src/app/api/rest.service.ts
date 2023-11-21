@@ -4,6 +4,15 @@ import { Observable, of } from 'rxjs';
 import { map, catchError, tap } from 'rxjs/operators';
 
 const endpoint = 'http://14.7.33.34:8080/api/';
+// const endpoint = 'http://localhost:8080/api/';
+
+const adPopcornMediakey = '241494633';
+
+const adPopcornLiveUrl = 'https://apapi.adpopcorn.com';
+const adPopcornTestUrl = 'https://apapi-staging.adpopcorn.com';
+
+const getAdPopcornMisson = `${adPopcornTestUrl}/ap/v1/api/mediamix/meta?mediakey=${adPopcornMediakey}&country=KR&language=ko`
+
 const httpOptions = {
   headers: new HttpHeaders({
     'Content-Type':  'application/json'
@@ -54,6 +63,11 @@ export class RestService {
     map(this.extractData));
   }
 
+  getAdPopcornInfo(): Observable<any> {
+    return this.http.get(endpoint + 'mission/' + "getAdPopcornInfo").pipe(
+    map(this.extractData));
+  }
+
   getWithdrawByUser(seq:string): Observable<any> {
     return this.http.get(endpoint + 'withdraw/' + 'withdrawByUser/' + seq).pipe(
     map(this.extractData));
@@ -88,4 +102,5 @@ export class RestService {
     return this.http.post(endpoint + 'user/' + 'uesrDelete/' + userSeq, httpOptions).pipe(
       map(this.extractData));
   }
+  
 }

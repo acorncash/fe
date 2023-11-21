@@ -1,0 +1,34 @@
+<ion-header [translucent]="true">
+  <ion-toolbar style="--background:#fff; --border-width: 0;">
+    <ion-buttons slot="start">
+      <ion-back-button text=""></ion-back-button>
+    </ion-buttons>
+    <ion-title style="font-weight: bold; font-size: 18px;">
+      {{adPopcornDetail.Title}} 미션 상세
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <div class="slider">
+      <img src='{{adPopcornDetailJpg}}'/>
+  </div>
+
+  <div style="padding: 10px 20px;">
+    <p style="font-size: 20px; font-weight: bold; margin: 4px 0;">
+      미션힌트
+    </p>
+    <p style="font-size: 14px; color: #555555; white-space: pre-wrap">
+      {{adPopcornDetail.ActionDescription}}
+      <br>
+    </p>
+  </div>
+</ion-content>
+
+<ion-footer>
+  <div style="padding: 10px 20px;">
+    <ion-button (click)="missionStart()" expand="block" style="height: 56px; font-size: 18px; font-weight: bold; border-radius: 10px; --background: #FF9040; --background-activated: #F16C1E">
+      <div>미션 수행하기 {{adPopcornDetail.RewardQuantity}} 도토리</div>
+    </ion-button>
+  </div>
+</ion-footer>

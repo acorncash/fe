@@ -1,0 +1,25 @@
+p, span {
+    color: #292B2C;
+}
+.slider {
+    width: 100%;
+    height: auto;
+    display: flex;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scroll-snap-type: x mandatory;
+}
+.slide {
+    scroll-behavior: smooth;
+    scroll-snap-align: start;
+    width: 100%;
+    flex-shrink: 0;
+    height: 100%;
+}
+
+.ellipsis {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    word-break: break-all;
+}

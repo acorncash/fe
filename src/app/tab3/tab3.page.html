@@ -9,11 +9,11 @@
 <ion-content [fullscreen]="true">
   <div style="padding: 0px 24px;">
     <p style="font-size: 14px; margin-bottom: 24px;">
-      전체 미션 1개
+      전체 미션 {{adPopcornCnt}}개
     </p>
     
     <!-- *ngFor="let number of [0,1,2,3,4]" (click)="navDetail(number)" -->
-    <div style="display: flex; margin-bottom: 32px;">
+    <!-- <div style="display: flex; margin-bottom: 32px;">
       <img src='../../assets/image/mission.jpg' style="width: 65px; height: 65px; border-radius: 10px;" />
       <div (click)="notProvided()" style="padding-left: 20px; font-size: 14px; color: #7F818B; padding: 4px 20px;">
         <p class="ellipsis" style="margin: 0; font-weight: bold; margin-bottom: 2px; color: #1C1C1D;">
@@ -28,6 +28,27 @@
           5,000 도토리 적립
         </p>
       </div>
+    </div> -->
+
+    <div *ngFor="let mission of adPopcornList" style="display: flex; margin-bottom: 20px;" (click)="adPopcornPressDetail(mission.CampaignKey)">
+    <!-- <div *ngFor="let mission of adPopcornList" style="display: flex; margin-bottom: 20px;" (click)="navCaptureDetail(mission.seq)"> -->
+      <img src='{{mission.ListIcon}}' style="width: 50px; height: 50px; border-radius: 10px;" />
+      <div style="padding-left: 20px; font-size: 14px; color: #7F818B;">
+        <p style="margin: 0; font-weight: bold; margin-bottom: 4px; color: #1C1C1D;">
+          {{mission.CampaignDescription}} 미션 하러가기
+          <!-- {{mission.ListIcon}} -->
+        </p>
+        <div class="ellipsis" style="margin-bottom: 2px;">
+          <span>
+            {{mission.ActionDescription}}
+          </span>
+        </div>
+        <p style="margin: 0; color: #F16C1E; font-weight: bold;">
+          {{addComma(mission.RewardQuantity)}} 도토리 적립
+        </p>
+      </div>
     </div>
+
+
   </div>
 </ion-content>

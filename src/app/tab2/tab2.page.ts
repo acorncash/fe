@@ -25,6 +25,10 @@ export class Tab2Page {
     this.userSeq = localStorage.getItem("seq");
   }
   
+  ionViewWillEnter() {
+    this.getMisionList();
+  }
+  
   IonViewDidEnter() {
     this.getMisionList();
   }

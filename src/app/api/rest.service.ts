@@ -3,8 +3,8 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
 import { map, catchError, tap } from 'rxjs/operators';
 
-const endpoint = 'http://14.7.33.34:8080/api/';
-// const endpoint = 'http://localhost:8080/api/';
+// const endpoint = 'http://14.7.33.34:8080/api/';
+const endpoint = 'http://localhost:8080/api/';
 
 const adPopcornMediakey = '241494633';
 
@@ -13,16 +13,55 @@ const adPopcornTestUrl = 'https://apapi-staging.adpopcorn.com';
 
 const getAdPopcornMisson = `${adPopcornTestUrl}/ap/v1/api/mediamix/meta?mediakey=${adPopcornMediakey}&country=KR&language=ko`
 
+// const getCsrfTokenFromCookie = () => {
+//   // CSRF 토큰을 발급 받을 서버의 엔드포인트 URL을 설정합니다.
+//   var csrfTokenUrl = `${endpoint}user/token`;
+
+//   // GET 요청을 보냅니다.
+//       fetch(csrfTokenUrl,{
+//         method: "GET",
+//         mode: "cors", // CORS 요청 모드 설정
+//         credentials: "include", // 'same-origin' 또는 'omit' 사용
+//     }).then(function(response) {
+//           if (!response.ok) {
+//               throw new Error("Failed to fetch CSRF token");
+//           }
+//           return response.text();
+//       })
+//       .then(function(csrfToken) {
+//           console.log("Received CSRF token:", csrfToken);
+//       })
+//       .catch(function(error) {
+//           console.error("Error fetching CSRF token:", error);
+//       });
+
+//   const name = 'XSRF-TOKEN=';
+//   const decodedCookie = decodeURIComponent(document.cookie);
+//   const cookieArray = decodedCookie.split(';');
+//   for (const cookie of cookieArray) {
+//     if (cookie.indexOf(name) === 0) {
+//       alert(cookie.substring(name.length, cookie.length))
+//       console.log(1,cookie.substring(name.length, cookie.length))
+//       return cookie.substring(name.length, cookie.length);
+//     }
+//   }
+//   return '';
+// }
+
 const httpOptions = {
   headers: new HttpHeaders({
-    'Content-Type':  'application/json'
+    'Content-Type':  'application/json',
+    // 'X-XSRF-TOKEN': getCsrfTokenFromCookie()
   })
+  ,withCredentials: true
 };
 
 const httpFileOptions = {
   headers: new HttpHeaders({
-    'Content-Type':  'multipart/form-data'
+    'Content-Type':  'multipart/form-data',
+    // 'X-XSRF-TOKEN': getCsrfTokenFromCookie()
   })
+  ,withCredentials: true
 };
 
 @Injectable({
@@ -66,6 +105,11 @@ export class RestService {
   getAdPopcornInfo(): Observable<any> {
     return this.http.get(endpoint + 'mission/' + "getAdPopcornInfo").pipe(
     map(this.extractData));
+  }
+  
+  getAdPopcornJoin(campaignKey:string, usn:string) {
+    return this.http.get(endpoint + 'mission/' + 'getAdPopcornJoin/' + campaignKey + '/' + usn).pipe(
+      map(this.extractData));
   }
 
   getWithdrawByUser(seq:string): Observable<any> {

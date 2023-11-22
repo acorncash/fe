@@ -21,15 +21,15 @@ export class Tab1Page {
   ) {}
   
   ngOnInit() {
-    localStorage.setItem("name", "사용자")
-    localStorage.setItem("dotori", "0")
+    // localStorage.setItem("name", "사용자")
+    // localStorage.setItem("dotori", "0")
     localStorage.setItem("seq", "809")
     
     this.name = localStorage.getItem("name");
     this.dotori = localStorage.getItem("dotori");
     this.userSeq = localStorage.getItem("seq");
     
-    /* if (this.userSeq !== undefined) {
+    if (this.userSeq !== undefined) {
       this.rest.getLogin("3047198451", "000000").subscribe((data:any) => {
         console.log(data);
         localStorage.setItem("name", data.nickname)
@@ -40,7 +40,7 @@ export class Tab1Page {
         this.dotori = localStorage.getItem("dotori");
         this.userSeq = localStorage.getItem("seq");
       });
-    } */
+    }
   }
 
   ionViewWillEnter() {

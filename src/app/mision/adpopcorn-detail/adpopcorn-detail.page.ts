@@ -16,6 +16,8 @@ export class AdpopcornDetailPage implements OnInit {
   userSeq: any;
   adPopcornDetailJpg: any;
   RedirectURL: any;
+  tid: any;
+  md5TidCampaignKey: any;
 
   constructor(
     private rest: RestService,
@@ -54,10 +56,12 @@ export class AdpopcornDetailPage implements OnInit {
 
               const tid = searchParams.get('tid');
               const cid = searchParams.get('cid');
-              const md5Hash = CryptoJS.MD5(tid + this.campaignKey);
+              const md5TidCampaignKey = CryptoJS.MD5(tid + this.campaignKey);
 
-              console.log(md5Hash)
-              console.log('https://apapi-staging.adpopcorn.com/ap/v1/postback/thirdparty/AchievePostBack?tid=' + tid + '&sign=' + md5Hash)
+              // console.log('https://apapi-staging.adpopcorn.com/ap/v1/postback/thirdparty/AchievePostBack?tid=' + tid + '&sign=' + md5TidCampaignKey)
+
+              this.tid = tid;
+              this.md5TidCampaignKey = md5TidCampaignKey;
               // tid+this.campaignKey
               // const url = 'https://apapi.adpopcorn.com/ap/v1/postback/thirdparty/AchievePostBack?tid=' + tid + '&sign='
           }
@@ -66,7 +70,12 @@ export class AdpopcornDetailPage implements OnInit {
     });
   }
 
-    missionStart() {
-      console.log('missionStart')    
-    }
+  notProvided() {
+    alert("서비스 준비중입니다");
+  }
+  
+    // missionStart() {
+    //   console.log('missionStart')
+    //   window.open('https://apapi-staging.adpopcorn.com/ap/v1/postback/thirdparty/AchievePostBack?tid=' + this.tid + '&sign=' + this.md5TidCampaignKey);
+    // }
 }

@@ -122,6 +122,11 @@ export class RestService {
     map(this.extractData));
   }
 
+  sendKakaoGift(seq:string, token:string): Observable<any> {
+    return this.http.get(endpoint + 'kakao-gift/' + 'sendGift/' + seq + '/' + token).pipe(
+    map(this.extractData));
+  }
+
   postJoin(jsonModel:string) {
     return this.http.post(endpoint + 'user/' + 'join', jsonModel, httpOptions).pipe(
       map(this.extractData));

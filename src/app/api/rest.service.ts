@@ -53,7 +53,7 @@ const httpOptions = {
     'Content-Type':  'application/json',
     // 'X-XSRF-TOKEN': getCsrfTokenFromCookie()
   })
-  ,withCredentials: true
+  // ,withCredentials: true
 };
 
 const httpFileOptions = {
@@ -61,7 +61,7 @@ const httpFileOptions = {
     'Content-Type':  'multipart/form-data',
     // 'X-XSRF-TOKEN': getCsrfTokenFromCookie()
   })
-  ,withCredentials: true
+  // ,withCredentials: true
 };
 
 @Injectable({

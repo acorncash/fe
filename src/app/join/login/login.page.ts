@@ -13,7 +13,7 @@ declare let Kakao : any;
 export class LoginPage implements OnInit {
   host:any;
   KAKAO_REST_API_KEY = "b2f9c8bcb75d5dc1e65936bcffc386d1";
-  KAKAO_REDIRECT_URI = `http://14.7.33.34:8080/kakao`;
+  KAKAO_REDIRECT_URI = `http://14.7.33.34:8080/callback/login/kakao`;
   NAVER_REST_API_KEY = "JHEetUu7mEdTxaMm1paO";
   NAVER_REDIRECT_URI = `http://14.7.33.34:8080/callback/login/naver`;
   

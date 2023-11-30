@@ -21,8 +21,8 @@ export class Tab1Page {
   ) {}
   
   ngOnInit() {
-    // localStorage.setItem("name", "사용자")
-    // localStorage.setItem("dotori", "0")
+    localStorage.setItem("name", "사용자")
+    localStorage.setItem("dotori", "0")
     localStorage.setItem("seq", "809")
     
     this.name = localStorage.getItem("name");

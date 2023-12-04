@@ -38,6 +38,12 @@ export class LoginPage implements OnInit {
 
     let browser = this.inAppBrowser.create(`https://kauth.kakao.com/oauth/authorize?client_id=${this.KAKAO_REST_API_KEY}&redirect_uri=${this.KAKAO_REDIRECT_URI}&response_type=code&scope=account_email`, '_blank', options);
 
+    browser.on('loadstop').subscribe(() => {
+      browser.executeScript({code: `
+      webkit.messageHandlers.cordova_iab.postMessage(JSON.stringify(message));
+      `})
+    })
+
     browser.on('message').subscribe((val) => {
       localStorage.clear()
 
@@ -56,6 +62,12 @@ export class LoginPage implements OnInit {
     };
 
     let browser = this.inAppBrowser.create(`https://nid.naver.com/oauth2.0/authorize?client_id=${this.NAVER_REST_API_KEY}&redirect_uri=${this.NAVER_REDIRECT_URI}&response_type=code&state=STATE_STRING`, '_blank', options);
+
+    browser.on('loadstop').subscribe(() => {
+      browser.executeScript({code: `
+      webkit.messageHandlers.cordova_iab.postMessage(JSON.stringify(message));
+      `})
+    })
 
     browser.on('message').subscribe((val) => {
       localStorage.clear()

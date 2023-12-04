@@ -7,27 +7,20 @@ import Swal from 'sweetalert2';
   styleUrls: ['./recommender.page.scss'],
 })
 export class RecommenderPage implements OnInit {
-  userSeq = localStorage.getItem("seq");
-  amount:any;
+  userSeq:any;
+  email:any;
   dotori:any = "0";
   constructor(
     private rest: RestService,
   ) { }
 
   ngOnInit() {
+    this.userSeq = localStorage.getItem("seq");
     this.dotori = localStorage.getItem("dotori");
   }
 
   submit() {
-    const data = {
-      userSeq: this.userSeq,
-      dotoli: this.amount,
-    }
-
-    var json = JSON.stringify(data) ;
-    console.log(json);
-
-    this.rest.postAddWithdraw(json).subscribe((data:any) => {
+    this.rest.postRecommend(this.userSeq, this.email).subscribe((data:any) => {
       console.log(data);
       if(data.status != "Fail") {
         Swal.fire({

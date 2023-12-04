@@ -161,5 +161,9 @@ export class RestService {
     return this.http.post(endpoint + 'user/' + 'uesrDelete/' + userSeq, httpOptions).pipe(
       map(this.extractData));
   }
-  
+
+  postRecommend(userSeq:string, email:string) {
+    return this.http.post(endpoint + 'user/' + 'recommend/' + userSeq + "/" + email , httpOptions).pipe(
+      map(this.extractData));
+  }
 }

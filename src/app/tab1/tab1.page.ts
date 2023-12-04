@@ -21,9 +21,9 @@ export class Tab1Page {
   ) {}
   
   ngOnInit() {
-    localStorage.setItem("name", "사용자")
-    localStorage.setItem("dotori", "0")
-    localStorage.setItem("seq", "809")
+    // localStorage.setItem("name", "사용자")
+    // localStorage.setItem("dotori", "0")
+    // localStorage.setItem("seq", "809")
     
     this.name = localStorage.getItem("name");
     this.dotori = localStorage.getItem("dotori");
@@ -83,7 +83,15 @@ export class Tab1Page {
   pointList() {
     this.router.navigateByUrl('/point');
   }
+
+  withdrawList() {
+    this.router.navigateByUrl('/withdraw-list');
+  }
   
+  navDetail(seq:number) {  
+    this.router.navigateByUrl('/coupon-detail/' + seq);
+  }
+
   attendanceCheck() {
     this.rest.postAttendanceCheck(this.userSeq).subscribe((data:any) => {
       console.log(data);

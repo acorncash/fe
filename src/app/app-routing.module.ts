@@ -2,9 +2,9 @@ import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
-  {
-    path : '', redirectTo : '/login',  pathMatch : 'full'
-  },
+  // {
+  //   path : '', redirectTo : '/login',  pathMatch : 'full'
+  // },
   {
     path: '',
     loadChildren: () => import('./tabs/tabs.module').then(m => m.TabsPageModule),
@@ -36,6 +36,10 @@ const routes: Routes = [
   {
     path: 'coupon-detail/:seq',
     loadChildren: () => import('./coupon/detail/detail.module').then( m => m.DetailPageModule)
+  },
+  {
+    path: 'recommender-detail/:seq',
+    loadChildren: () => import('./recommender/recommender.module').then( m => m.RecommenderPageModule)
   },
   {
     path: 'adpopcorn-detail/:campaignKey',

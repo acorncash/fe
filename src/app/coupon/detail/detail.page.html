@@ -35,7 +35,7 @@
       {{title}}
     </p>
     <p style="font-size: 18px; font-weight: bold; margin: 4px 0; color: #F16C1E;">
-      {{price}} 도토리
+      {{addComma(price)}} 도토리
     </p>
   </div>
 </ion-content>
@@ -43,7 +43,7 @@
 <ion-footer>
   <div style="padding: 10px 20px;">
     <ion-button (click)="pay()" expand="block" style="height: 56px; font-size: 20px; font-weight: bold; border-radius: 10px; --background: linear-gradient(180deg, #FF9040 0%, #F16C1E 100%); --background-activated: #F16C1E">
-      {{price}} 도토리로 구매하기
+      {{addComma(price)}} 도토리로 구매하기
     </ion-button>
   </div>
 </ion-footer>

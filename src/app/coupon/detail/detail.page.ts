@@ -126,10 +126,13 @@ export class DetailPage implements OnInit {
             text: "결제가 완료되었습니다",
             icon: 'success',
             heightAuto: false,
-        
           })
         }
     });
+  }
+
+  addComma(string:any) {
+    return string.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
   }
 
 }

@@ -2,20 +2,17 @@ import { Component, OnInit } from '@angular/core';
 import { RestService } from 'src/app/api/rest.service';
 import Swal from 'sweetalert2';
 @Component({
-  selector: 'app-withdraw',
-  templateUrl: './withdraw.page.html',
-  styleUrls: ['./withdraw.page.scss'],
+  selector: 'app-recommender',
+  templateUrl: './recommender.page.html',
+  styleUrls: ['./recommender.page.scss'],
 })
-export class WithdrawPage implements OnInit {
+export class RecommenderPage implements OnInit {
   userSeq = localStorage.getItem("seq");
   amount:any;
-  banknumber:any;
-  bankname:any;
   dotori:any = "0";
   constructor(
     private rest: RestService,
   ) { }
-
 
   ngOnInit() {
     this.dotori = localStorage.getItem("dotori");
@@ -25,8 +22,6 @@ export class WithdrawPage implements OnInit {
     const data = {
       userSeq: this.userSeq,
       dotoli: this.amount,
-      bankAccountNumber: this.banknumber,
-      bankAccountName: this.bankname,
     }
 
     var json = JSON.stringify(data) ;
@@ -36,7 +31,7 @@ export class WithdrawPage implements OnInit {
       console.log(data);
       if(data.status != "Fail") {
         Swal.fire({
-          text: "출금 신청이 완료되었습니다",
+          text: "추천인 포인트 지급이 완료되었습니다.",
           icon: 'success',
           heightAuto: false,
           confirmButtonText: '닫기',

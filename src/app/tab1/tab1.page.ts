@@ -92,6 +92,10 @@ export class Tab1Page {
     this.router.navigateByUrl('/coupon-detail/' + seq);
   }
 
+  recommenderDetail() {  
+    this.router.navigateByUrl('/recommender-detail/' + this.userSeq);
+  }
+
   attendanceCheck() {
     this.rest.postAttendanceCheck(this.userSeq).subscribe((data:any) => {
       console.log(data);

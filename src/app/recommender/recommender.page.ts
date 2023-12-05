@@ -16,7 +16,9 @@ export class RecommenderPage implements OnInit {
 
   ngOnInit() {
     this.userSeq = localStorage.getItem("seq");
-    this.dotori = localStorage.getItem("dotori");
+    this.rest.getDotoriByUser(this.userSeq).subscribe((data:any) => {
+      this.dotori = data.dotoli;
+    });
   }
 
   submit() {
@@ -29,8 +31,9 @@ export class RecommenderPage implements OnInit {
           heightAuto: false,
           confirmButtonText: '닫기',
         })
-        this.dotori = Number(localStorage.getItem("dotori")) + 500;
-        localStorage.setItem("dotori", this.dotori)
+        this.rest.getDotoriByUser(this.userSeq).subscribe((data:any) => {
+          this.dotori = data.dotoli;
+        });
       } else {
         Swal.fire({
           text: data.message,

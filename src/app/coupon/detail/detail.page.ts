@@ -67,12 +67,16 @@ export class DetailPage implements OnInit {
   }
 
   ionViewWillEnter() {
-    this.dotori = localStorage.getItem("dotori");
+    this.rest.getDotoriByUser(this.userSeq).subscribe((data:any) => {
+      this.dotori = data.dotoli;
+    });
     this.getGiftDetail();
   }
 
   IonViewDidEnter() {
-    this.dotori = localStorage.getItem("dotori");
+    this.rest.getDotoriByUser(this.userSeq).subscribe((data:any) => {
+      this.dotori = data.dotoli;
+    });
   }
 
   getGiftDetail() {
@@ -120,8 +124,9 @@ export class DetailPage implements OnInit {
         this.rest.sendKakaoGift(this.userSeq, this.token).subscribe((data:any) => {
           console.log(data);
           this.list = data;
-          localStorage.setItem("dotori", (parseInt(this.dotori) - this.price).toString());
-          this.dotori = localStorage.getItem("dotori");
+          this.rest.getDotoriByUser(this.userSeq).subscribe((data:any) => {
+            this.dotori = data.dotoli;
+          });
         });
         Swal.fire({
           text: "결제가 완료되었습니다",

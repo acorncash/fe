@@ -7,7 +7,7 @@ import Swal from 'sweetalert2';
   styleUrls: ['./withdraw.page.scss'],
 })
 export class WithdrawPage implements OnInit {
-  userSeq = localStorage.getItem("seq");
+  userSeq:any = localStorage.getItem("seq");
   amount:any;
   banknumber:any;
   bankname:any;
@@ -18,7 +18,9 @@ export class WithdrawPage implements OnInit {
 
 
   ngOnInit() {
-    this.dotori = localStorage.getItem("dotori");
+      this.rest.getDotoriByUser(this.userSeq).subscribe((data:any) => {
+        this.dotori = data.dotoli;
+      });
   }
 
   submit() {

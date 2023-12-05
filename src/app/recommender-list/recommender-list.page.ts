@@ -16,14 +16,16 @@ export class RecommenderListPage implements OnInit {
 
   ngOnInit() {
     this.userSeq = localStorage.getItem("seq");
-    this.dotori = localStorage.getItem("dotori");
+    this.rest.getDotoriByUser(this.userSeq).subscribe((data:any) => {
+      this.dotori = data.dotoli;
+    });
   }
   
   ionViewWillEnter() {
-    this.getDotoriByUser();
+    this.getRecommend();
   }
 
-  getDotoriByUser() {
+  getRecommend() {
     this.list = [];
     this.rest.getRecommendList(this.userSeq).subscribe((data:any) => {
       console.log(data);

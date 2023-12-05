@@ -16,7 +16,9 @@ export class PointPage implements OnInit {
 
   ngOnInit() {
     this.userSeq = localStorage.getItem("seq");
-    this.dotori = localStorage.getItem("dotori");
+    this.rest.getDotoriByUser(this.userSeq).subscribe((data:any) => {
+      this.dotori = data.dotoli;
+    });
   }
   
   ionViewWillEnter() {

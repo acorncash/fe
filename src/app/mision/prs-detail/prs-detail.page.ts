@@ -89,8 +89,6 @@ export class PrsDetailPage implements OnInit {
       this.rest.postPressMision(this.seq, this.userSeq).subscribe((data:any) => {
         console.log(data);
         if(data.status == "Success") {
-          let dotori = localStorage.getItem("dotori");
-          localStorage.setItem("dotori", (Number(dotori) + Number(this.mission.dotoli)).toString())
           alert('적립되었습니다.')
         }
       });

@@ -54,7 +54,6 @@ export class CallbackPage implements OnInit {
       if(this.loginData != null) {
         //login Success
         localStorage.setItem("name", this.loginData.name)
-        localStorage.setItem("dotori", this.loginData.dotoli)
         localStorage.setItem("seq", this.loginData.seq)
         window.location.replace('/tabs/tab1');
       } else {

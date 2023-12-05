@@ -22,24 +22,13 @@ export class Tab1Page {
   
   ngOnInit() {
     // localStorage.setItem("name", "사용자")
-    // localStorage.setItem("dotori", "0")
     // localStorage.setItem("seq", "809")
     
     this.name = localStorage.getItem("name");
-    this.dotori = localStorage.getItem("dotori");
     this.userSeq = localStorage.getItem("seq");
-    // if (this.userSeq !== undefined) {
-    //   this.rest.getLogin("3047198451", "000000").subscribe((data:any) => {
-    //     console.log(data);
-    //     localStorage.setItem("name", data.nickname)
-    //     localStorage.setItem("dotori", data.dotoli)
-    //     localStorage.setItem("seq", data.seq)
-  
-    //     this.name = localStorage.getItem("name");
-    //     this.dotori = localStorage.getItem("dotori");
-    //     this.userSeq = localStorage.getItem("seq");
-    //   });
-    // }
+    this.rest.getDotoriByUser(this.userSeq).subscribe((data:any) => {
+      this.dotori = data.dotoli;
+    });
 
     this.rest.getUser(this.userSeq).subscribe((data:any) => {
       console.log(data);
@@ -48,22 +37,30 @@ export class Tab1Page {
 
   ionViewWillEnter() {
     this.getMisionList();
-    this.dotori = localStorage.getItem("dotori");
+    this.rest.getDotoriByUser(this.userSeq).subscribe((data:any) => {
+      this.dotori = data.dotoli;
+    });
   }
   
   IonViewDidEnter() {
     this.getMisionList();
-    this.dotori = localStorage.getItem("dotori");
+    this.rest.getDotoriByUser(this.userSeq).subscribe((data:any) => {
+      this.dotori = data.dotoli;
+    });
   }
 
   navAnswerDetail(seq:number) {  
     this.router.navigateByUrl('/answer-detail/' + seq);
-    this.dotori = localStorage.getItem("dotori");
+    this.rest.getDotoriByUser(this.userSeq).subscribe((data:any) => {
+      this.dotori = data.dotoli;
+    });
   }
 
   navCouponDetail(seq:number) {  
     this.router.navigateByUrl('/coupon-detail/' + seq);
-    this.dotori = localStorage.getItem("dotori");
+    this.rest.getDotoriByUser(this.userSeq).subscribe((data:any) => {
+      this.dotori = data.dotoli;
+    });
   }
 
   getMisionList() {
@@ -72,9 +69,14 @@ export class Tab1Page {
       console.log(data);
       this.misionList = data;
     });
+
     this.rest.getMisionList("C", this.userSeq).subscribe((data:any) => {
       console.log(data);
       this.captureMisionList = data;
+    });
+
+    this.rest.getDotoriByUser(this.userSeq).subscribe((data:any) => {
+      this.dotori = data.dotoli;
     });
   }
   
@@ -109,10 +111,10 @@ export class Tab1Page {
   attendanceCheck() {
     this.rest.postAttendanceCheck(this.userSeq).subscribe((data:any) => {
       console.log(data);
-        if(data.status == "Success") {
-          let dotori = localStorage.getItem("dotori");
-          localStorage.setItem("dotori", (Number(dotori) + Number(1)).toString())
-
+        if(data.status == "Success") {          
+          this.rest.getDotoriByUser(this.userSeq).subscribe((data:any) => {
+            this.dotori = data.dotoli;
+          });
           Swal.fire({
             text: "출석체크를 완료하여 1 포인트가 적립되었습니다!",
             icon: 'success',
@@ -128,7 +130,6 @@ export class Tab1Page {
           })
         }
     });
-    this.dotori = localStorage.getItem("dotori");
   }
   
 }

@@ -96,6 +96,10 @@ export class Tab1Page {
     this.router.navigateByUrl('/recommender-detail/' + this.userSeq);
   }
 
+  recommenderList() {  
+    this.router.navigateByUrl('/recommender-list/' + this.userSeq);
+  }
+
   attendanceCheck() {
     this.rest.postAttendanceCheck(this.userSeq).subscribe((data:any) => {
       console.log(data);

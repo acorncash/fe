@@ -42,6 +42,10 @@ const routes: Routes = [
     loadChildren: () => import('./recommender/recommender.module').then( m => m.RecommenderPageModule)
   },
   {
+    path: 'recommender-list/:seq',
+    loadChildren: () => import('./recommender-list/recommender-list.module').then( m => m.RecommenderListPageModule)
+  },
+  {
     path: 'adpopcorn-detail/:campaignKey',
     loadChildren: () => import('./mision/adpopcorn-detail/adpopcorn-detail.module').then( m => m.AdpopcornDetailPageModule)
   },

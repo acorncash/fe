@@ -1,0 +1,37 @@
+<ion-header [translucent]="true">
+  <ion-toolbar style="--background:#fff; --border-width: 0;">
+    <ion-buttons slot="start">
+      <ion-back-button text=""></ion-back-button>
+    </ion-buttons>
+    <ion-title style="font-weight: bold; font-size: 18px;">
+      추천 내역
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <div style="padding: 10px 20px">
+    <img style="margin-right: 4px; width: 24px;" src="../../assets/icon/dotori_icon.svg"/>
+    <span style="font-size:24px; font-weight: bold; color:#F16C1E; font-weight: bold;">
+      {{dotori}}
+    </span>
+  </div>
+
+  <div style="width: 100%; height: 8px; background: #F1F1F1; margin: 10px 0;"></div>
+
+  <div style="padding: 10px 20px">
+    <div class="item" *ngFor="let item of list" style="margin-bottom: 32px;">
+      <div style="display: flex; justify-content: space-between;">
+        <span style="font-size: 14px; font-weight: bold; color: #292B2C;">
+          {{item.missionTitle}}
+        </span>
+        <span style="font-size: 14px; font-weight: bold; color: #F16C1E;">
+          {{item.missionDotoli}} 도토리
+        </span>
+      </div>
+      <span style="font-size: 14px; color: #7F818B;">
+        {{datetimeToString(item.createAt)}}
+      </span>
+    </div>
+  </div>
+</ion-content>

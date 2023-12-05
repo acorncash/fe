@@ -29,6 +29,8 @@ export class RecommenderPage implements OnInit {
           heightAuto: false,
           confirmButtonText: '닫기',
         })
+        this.dotori = Number(localStorage.getItem("dotori")) + 500;
+        localStorage.setItem("dotori", this.dotori)
       } else {
         Swal.fire({
           text: data.message,

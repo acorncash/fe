@@ -58,10 +58,12 @@ export class Tab1Page {
 
   navAnswerDetail(seq:number) {  
     this.router.navigateByUrl('/answer-detail/' + seq);
+    this.dotori = localStorage.getItem("dotori");
   }
 
   navCouponDetail(seq:number) {  
     this.router.navigateByUrl('/coupon-detail/' + seq);
+    this.dotori = localStorage.getItem("dotori");
   }
 
   getMisionList() {
@@ -126,6 +128,7 @@ export class Tab1Page {
           })
         }
     });
+    this.dotori = localStorage.getItem("dotori");
   }
   
 }

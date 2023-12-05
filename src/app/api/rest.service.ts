@@ -117,6 +117,16 @@ export class RestService {
       map(this.extractData));
   }
 
+  getUser(userSeq:string) {
+    return this.http.get(endpoint + 'user/' + userSeq).pipe(
+      map(this.extractData));
+  }
+
+  getRecommendList(userSeq:string) {
+    return this.http.get(endpoint + 'user/' + "recommendList/" + userSeq).pipe(
+      map(this.extractData));
+  }
+
   getWithdrawByUser(seq:string): Observable<any> {
     return this.http.get(endpoint + 'withdraw/' + 'withdrawByUser/' + seq).pipe(
     map(this.extractData));

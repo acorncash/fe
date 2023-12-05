@@ -40,6 +40,10 @@ export class Tab1Page {
     //     this.userSeq = localStorage.getItem("seq");
     //   });
     // }
+
+    this.rest.getUser(this.userSeq).subscribe((data:any) => {
+      console.log(data);
+    });
   }
 
   ionViewWillEnter() {

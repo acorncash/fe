@@ -115,19 +115,19 @@ export class DetailPage implements OnInit {
       heightAuto: false,
       confirmButtonText: "네",
       cancelButtonText: "아니요",
-    }).then((result) =>
-    {
-        if (result.isConfirmed) {
-          this.rest.sendKakaoGift(this.userSeq, this.token).subscribe((data:any) => {
-            console.log(data);
-            this.list = data;
-          });
-          Swal.fire({
-            text: "결제가 완료되었습니다",
-            icon: 'success',
-            heightAuto: false,
-          })
-        }
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.rest.sendKakaoGift(this.userSeq, this.token).subscribe((data:any) => {
+          console.log(data);
+          this.list = data;
+        });
+        Swal.fire({
+          text: "결제가 완료되었습니다",
+          icon: 'success',
+          heightAuto: false,
+        })
+        localStorage.setItem("dotori", (parseInt(this.dotori) - this.price).toString());
+      }
     });
   }
 

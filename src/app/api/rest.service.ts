@@ -3,8 +3,8 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
 import { map, catchError, tap } from 'rxjs/operators';
 
-const endpoint = 'http://14.7.33.34:8080/api/';
-// const endpoint = 'http://localhost:8080/api/';
+// const endpoint = 'http://14.7.33.34:8080/api/';
+const endpoint = 'http://localhost:8080/api/';
 
 const adPopcornMediakey = '241494633';
 
@@ -97,8 +97,8 @@ export class RestService {
     map(this.extractData));
   }
 
-  getDotoriByUser(seq:string): Observable<any> {
-    return this.http.get(endpoint + 'dotoli/' + "dotoliByUser/" + seq).pipe(
+  getDotoriByUser(userSeq:string) {
+    return this.http.get(endpoint + 'user/' + "dotoliByUser/" + userSeq).pipe(
     map(this.extractData));
   }
 

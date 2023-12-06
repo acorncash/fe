@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { RestService } from 'src/app/api/rest.service';
 import Swal from 'sweetalert2';
+declare let cordova: any;
 
 @Component({
   selector: 'app-tab1',
@@ -23,6 +24,16 @@ export class Tab1Page {
   ngOnInit() {
     // localStorage.setItem("name", "사용자")
     // localStorage.setItem("seq", "809")
+    
+    const successCallback = (result: any) => {
+      console.log('Success:', result); // 네이티브 메서드가 성공적으로 실행된 경우 결과를 처리합니다.
+    };
+    
+    const errorCallback = (error: any) => {
+      console.error('Error:', error); // 네이티브 메서드 실행 중에 오류가 발생한 경우 오류를 처리합니다.
+    };
+    
+    cordova.exec(successCallback, errorCallback, 'testPlugin', 'coolMethod', ["Hello, World!"]);
     
     this.name = localStorage.getItem("name");
     this.userSeq = localStorage.getItem("seq");

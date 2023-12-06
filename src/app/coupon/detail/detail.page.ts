@@ -121,7 +121,7 @@ export class DetailPage implements OnInit {
       cancelButtonText: "아니요",
     }).then((result) => {
       if (result.isConfirmed) {
-        this.rest.sendKakaoGift(this.userSeq, this.token).subscribe((data:any) => {
+        this.rest.sendKakaoGift(this.userSeq, this.price, this.token).subscribe((data:any) => {
           console.log(data);
           this.list = data;
           this.rest.getDotoriByUser(this.userSeq).subscribe((data:any) => {

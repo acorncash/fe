@@ -3,8 +3,8 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
 import { map, catchError, tap } from 'rxjs/operators';
 
-// const endpoint = 'http://14.7.33.34:8080/api/';
-const endpoint = 'http://localhost:8080/api/';
+const endpoint = 'http://14.7.33.34:8080/api/';
+// const endpoint = 'http://localhost:8080/api/';
 
 const adPopcornMediakey = '241494633';
 
@@ -132,8 +132,8 @@ export class RestService {
     map(this.extractData));
   }
 
-  sendKakaoGift(seq:string, token:string): Observable<any> {
-    return this.http.get(endpoint + 'kakao-gift/' + 'sendGift/' + seq + '/' + token).pipe(
+  sendKakaoGift(seq:string, price:string, token:string): Observable<any> {
+    return this.http.get(endpoint + 'kakao-gift/' + 'sendGift/' + seq + '/' + price + '/' + token).pipe(
     map(this.extractData));
   }
 

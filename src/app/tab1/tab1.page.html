@@ -30,7 +30,7 @@
 
         <div style="height: 24px;"></div>
 
-        <span style="font-size: 24px; color: white;"><b>0</b></span>
+        <span *ngIf="userData" style="font-size: 24px; color: white;"><b>{{this.userData.recommendCnt}}</b></span>
         <span style="font-size: 14px; color: white;"><b>명</b></span>
 
         <div style="height: 14px;"></div>
@@ -47,7 +47,7 @@
       
         <div style="height: 24px;"></div>
 
-        <span style="font-size: 24px; color: white;"><b>0</b></span>
+        <span *ngIf="userData" style="font-size: 24px; color: white;"><b>{{this.userData.recommendCnt * 500}}</b></span>
         <span style="font-size: 14px; color: white;"><b>p</b></span>
 
         <div style="height: 14px;"></div>

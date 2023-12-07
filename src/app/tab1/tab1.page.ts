@@ -15,6 +15,7 @@ export class Tab1Page {
   misionList: any;
   captureMisionList: any;
   userSeq: any;
+  userData:any;
 
   constructor(
     private router: Router,
@@ -33,17 +34,22 @@ export class Tab1Page {
       console.error('Error:', error); // 네이티브 메서드 실행 중에 오류가 발생한 경우 오류를 처리합니다.
     };
     
-    cordova.exec(successCallback, errorCallback, 'testPlugin', 'coolMethod', ["Hello, World!"]);
+    // cordova.exec(successCallback, errorCallback, 'testPlugin', 'coolMethod', ["Hello, World!"]);
     
     this.name = localStorage.getItem("name");
     this.userSeq = localStorage.getItem("seq");
     this.rest.getDotoriByUser(this.userSeq).subscribe((data:any) => {
+      console.log(data);
       this.dotori = data.dotoli;
+      this.userData = data
+      console.log(this.userData.recommendCnt);
     });
 
-    this.rest.getUser(this.userSeq).subscribe((data:any) => {
-      console.log(data);
-    });
+    // this.rest.getUser(this.userSeq).subscribe((data:any) => {
+    //   console.log(data);
+    //   this.userData = data;
+    //   console.log(this.userData.recommendCnt);
+    // });
   }
 
   ionViewWillEnter() {

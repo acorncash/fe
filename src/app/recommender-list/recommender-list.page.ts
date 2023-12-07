@@ -9,6 +9,7 @@ export class RecommenderListPage implements OnInit {
   userSeq: any; 
   dotori: any; 
   list: any;
+  userData: any;
 
   constructor(
     private rest: RestService,
@@ -18,10 +19,15 @@ export class RecommenderListPage implements OnInit {
     this.userSeq = localStorage.getItem("seq");
     this.rest.getDotoriByUser(this.userSeq).subscribe((data:any) => {
       this.dotori = data.dotoli;
+      this.userData = data
     });
   }
   
   ionViewWillEnter() {
+    this.getRecommend();
+  }
+
+  IonViewDidEnter() {
     this.getRecommend();
   }
 

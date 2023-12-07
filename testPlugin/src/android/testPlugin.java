@@ -2,159 +2,43 @@ package com.test.myPlugin;
 
 import org.apache.cordova.CordovaPlugin;
 import org.apache.cordova.CallbackContext;
-
 import org.json.JSONArray;
 import org.json.JSONException;
-import org.json.JSONObject;
-
-import android.content.Intent;
-import android.os.Bundle;
 import android.util.Log;
-import android.view.ViewGroup;
-import android.widget.Toast;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.databinding.DataBindingUtil;
+import android.app.Activity;
+import com.igaworks.adpopcorn.Adpopcorn;
 
-import com.tnkfactory.ad.PlacementEventListener;
-import com.tnkfactory.ad.TnkAdConfig;
-import com.tnkfactory.ad.TnkOfferwall;
-import com.tnkfactory.ad.basic.AdPlacementView;
-import com.tnkfactory.ad.basic.PlacementFeedViewLayout;
-import com.tnkfactory.ad.basic.PlacementScrollViewLayout;
-import com.tnkfactory.ad.basic.PlacementViewPagerLayout;
-import com.tnkfactory.ad.basic.TnkAdPlacementFeedImageItem;
-import com.tnkfactory.ad.basic.TnkAdPlacementFeedItem;
-import com.tnkfactory.ad.basic.TnkAdPlacementIconItem;
-import com.tnkfactory.ad.basic.TnkAdPlacementListItem;
-import com.tnkfactory.ad.rwd.AdvertisingIdInfo;
-import com.tnkfactory.offerrer.TnkAdManager;
-import com.tnkfactory.tnkofferer.databinding.ActivityMainBinding;
-
-import kotlin.reflect.KClass;
-
-/**
- * This class echoes a string called from JavaScript.
- */
 public class testPlugin extends CordovaPlugin {
 
-    @Override
-    public boolean execute(String action, JSONArray args, CallbackContext callbackContext) throws JSONException {
-        // if (action.equals("coolMethod")) {
-        //     String message = args.getString(0);
-        //     this.coolMethod(message, callbackContext);
-        //     return true;
-        // }
-        if (action.equals("coolMethod")) {
-            String message = args.getString(0);
-            this.onCreate(message);
-            // this.onCreate(message, callbackContext);
-            return true;
-        }
-        return false;
+  @Override
+  public boolean execute(String action, JSONArray args, CallbackContext callbackContext) throws JSONException {
+    if (action.equals("coolMethod")) {
+      String userId = args.getString(0);
+      coolMethod(userId, callbackContext);
+      return true;
     }
+    return false;
+  }
+  private void coolMethod(String userId, CallbackContext callbackContext) {
+    try {
+      // 현재 실행 중인 액티비티를 가져옵니다.
+      Activity currentActivity = cordova.getActivity();
 
-    // private void coolMethod(String message, CallbackContext callbackContext) {
-    //     if (message != null && message.length() > 0) {
-    //         callbackContext.success(message);
-    //     } else {
-    //         callbackContext.error("Expected one non-empty string argument.");
-    //     }
-    // }
+      if (currentActivity != null) {
+        // currentActivity 변수에 들어 있는 값을 로그에 출력합니다.
+        Log.d("CurrentActivity", currentActivity.getClass().getName());
 
-    @Override
-    protected void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-
-        ActivityMainBinding binding = DataBindingUtil.setContentView(this, R.layout.activity_main);
-        placementContainerView = binding.flPlacementAd;
-        offerwall = new TnkOfferwall(this);
-
-
-        Runnable rn = () -> {
-            // 고유 아이디는 매체사에서 유저 식별을 위한 고유값을 사용하셔야 하며
-            // 이 예제에서는 google adid를 사용 합니다.
-            AdvertisingIdInfo adInfo = AdvertisingIdInfo.requestIdInfo(MainActivityJava.this); // backgroud thread 처리 필요
-            String id = adInfo.getId();
-
-            // 2) 유저 식별값 설정
-            offerwall.setUserName(id);
-            // 3) COPPA 설정 (https://www.ftc.gov/business-guidance/privacy-security/childrens-privacy)
-            offerwall.setCOPPA(false);
-
-            offerwall.getEarnPoint(point -> {
-                runOnUiThread(() -> {
-                    binding.tvPoint.setText(String.format("받을 수 있는 포인트 : %d p", point));
-                });
-                return null;
-            });
-        };
-
-        new Thread(rn).start();
-
-        binding.btnDefault.setOnClickListener(view -> {
-            TnkAdManager.INSTANCE.setCustomClass();
-            TnkAdManager.INSTANCE.startDefaultActivity(this);
-        });
-
-        binding.tvPlacement1.setOnClickListener(view -> {
-            TnkAdConfig.INSTANCE.setPlacementLayout("open_ad", classToKClass(TnkAdPlacementFeedItem.class), classToKClass(PlacementFeedViewLayout.class));
-            setupPlacementView();
-        });
-        binding.tvPlacement2.setOnClickListener(view -> {
-            TnkAdConfig.INSTANCE.setPlacementLayout("open_ad", classToKClass(TnkAdPlacementFeedImageItem.class), classToKClass(PlacementFeedViewLayout.class));
-            setupPlacementView();
-        });
-        binding.tvPlacement3.setOnClickListener(view -> {
-            TnkAdConfig.INSTANCE.setPlacementLayout("open_ad", classToKClass(TnkAdPlacementIconItem.class), classToKClass(PlacementScrollViewLayout.class));
-            setupPlacementView();
-        });
-        binding.tvPlacement4.setOnClickListener(view -> {
-            TnkAdConfig.INSTANCE.setPlacementLayout("open_ad", classToKClass(TnkAdPlacementListItem.class), classToKClass(PlacementViewPagerLayout.class));
-            setupPlacementView();
-            adPlacementView.setSpanCount(1);
-            adPlacementView.setPageRowCount(3);
-        });
+        // Adpopcorn을 사용하여 오퍼월을 엽니다.
+        Adpopcorn.setUserId(currentActivity, "bXlBY2NvdW50X25hbWU");
+        Adpopcorn.openCPMOfferwall(currentActivity);
+        callbackContext.success("OfferWall opened successfully");
+      } else {
+        callbackContext.error("currentActivity is null");
+      }
+    } catch (Exception e) {
+      callbackContext.error("Error opening OfferWall: " + e.getMessage());
     }
+  }
 
-    KClass classToKClass(Class jClass) {
-        return kotlin.jvm.JvmClassMappingKt.getKotlinClass(jClass);
-    }
-
-    void setupPlacementView() {
-        adPlacementView = offerwall.getAdPlacementView(this);
-        placementContainerView.removeAllViews();
-        placementContainerView.addView(adPlacementView);
-        loadPlacementView();
-
-
-        adPlacementView.setPlacementEventListener(new PlacementEventListener() {
-
-            @Override
-            public void didAdDataLoaded(@NonNull String placementId, @Nullable String customData) {
-                adPlacementView.showAdList();
-            }
-
-            @Override
-            public void didFailedToLoad(@NonNull String placementId) {
-                Toast.makeText(MainActivityJava.this, "광고 로딩 실패", Toast.LENGTH_SHORT).show();
-            }
-
-            @Override
-            public void didAdItemClicked(@NonNull String appId, @NonNull String appName) {
-                Log.d("didAdItemClicked", "appId : $appId, appName : $appName");
-            }
-
-            @Override
-            public void didMoreLinkClicked() {
-                offerwall.startOfferwallActivity(MainActivityJava.this);
-            }
-        });
-    }
-
-    void loadPlacementView() {
-        adPlacementView.loadAdList("open_ad");
-    }
 }

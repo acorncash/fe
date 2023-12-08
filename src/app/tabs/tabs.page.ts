@@ -13,6 +13,13 @@ export class TabsPage {
   }
 
   chagedTab(name:string){
+    if(name=='tab3'){
+      alert('tab3')
+      // // 플러그인 초기화 및 메서드 호출
+      // let cordova: any;
+      // cordova.exec(this.successCallback, this.errorCallback, 'testPlugin', 'coolMethod', [localStorage.getItem("seq")]);
+      return;
+    }
     this.activeTab = name;
   }
 }

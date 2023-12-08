@@ -4,7 +4,7 @@ import { Observable, of } from 'rxjs';
 import { map, catchError, tap } from 'rxjs/operators';
 
 const endpoint = 'http://14.7.33.34:8080/api/';
-// const endpoint = 'http://localhost:8080/api/';
+// const endpoint = 'http://192.168.219.185:8080/api/';
 
 const adPopcornMediakey = '241494633';
 
@@ -69,9 +69,9 @@ const httpFileOptions = {
 })
 
 export class RestService {
-  
+
 	constructor(private http: HttpClient) { }
-  
+
   private extractData(res: any) {
     let body = res;
     return body || { };
@@ -91,12 +91,12 @@ export class RestService {
     return this.http.get(endpoint + `user/naver?code=${code}&state=${state}`).pipe(
       map(this.extractData));
   }
-  
+
   getMisionList(type:string, userSeq:string): Observable<any> {
     return this.http.get(endpoint + 'mission/missionByType/' + userSeq + "/" + type).pipe(
     map(this.extractData));
   }
-  
+
   getMisionDetail(seq:string): Observable<any> {
     return this.http.get(endpoint + 'mission/' + seq).pipe(
     map(this.extractData));
@@ -111,7 +111,7 @@ export class RestService {
     return this.http.get(endpoint + 'mission/' + "getAdPopcornInfo").pipe(
     map(this.extractData));
   }
-  
+
   getAdPopcornJoin(campaignKey:string, usn:string) {
     return this.http.get(endpoint + 'mission/' + 'getAdPopcornJoin/' + campaignKey + '/' + usn).pipe(
       map(this.extractData));

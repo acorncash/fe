@@ -28,9 +28,8 @@ public class testPlugin extends CordovaPlugin {
       if (currentActivity != null) {
         // currentActivity 변수에 들어 있는 값을 로그에 출력합니다.
         Log.d("CurrentActivity", currentActivity.getClass().getName());
-
         // Adpopcorn을 사용하여 오퍼월을 엽니다.
-        Adpopcorn.setUserId(currentActivity, "bXlBY2NvdW50X25hbWU");
+        Adpopcorn.setUserId(currentActivity, userId);
         Adpopcorn.openCPMOfferwall(currentActivity);
         callbackContext.success("OfferWall opened successfully");
       } else {

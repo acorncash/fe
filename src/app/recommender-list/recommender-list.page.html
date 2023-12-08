@@ -12,7 +12,7 @@
 <ion-content [fullscreen]="true">
   <div style="padding: 10px 20px">
     <img style="margin-right: 4px; width: 24px;" src="../../assets/icon/dotori_icon.svg"/>
-    <span style="font-size:24px; font-weight: bold; color:#F16C1E; font-weight: bold;">
+    <span *ngIf="userData" style="font-size:24px; font-weight: bold; color:#F16C1E; font-weight: bold;">
       {{this.userData.recommendCnt * 500}}
     </span>
   </div>
@@ -22,8 +22,8 @@
   <div style="padding: 10px 20px">
     <div class="item" *ngFor="let item of list" style="margin-bottom: 32px;">
       <div style="display: flex; justify-content: space-between;">
-        <span style="font-size: 14px; font-weight: bold; color: #292B2C;">
-          {{item.userEmail}} 추천인
+        <span *ngIf="userData" style="font-size: 14px; font-weight: bold; color: #292B2C;">
+          {{item.userEmail}}
         </span>
         <span style="font-size: 14px; font-weight: bold; color: #F16C1E;">
           500 도토리

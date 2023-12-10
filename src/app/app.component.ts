@@ -9,13 +9,4 @@ declare let cordova: any;
 })
 
 export class AppComponent {
-  constructor() {
-    document.addEventListener("deviceready", function() {
-      cordova.exec((result: any) => {
-        console.log('Success:', result);
-      }, (error: any) => {
-        console.error('Error:', error);
-      }, 'testPlugin', 'coolMethod', [localStorage.getItem("seq")]);
-    });
-  }
 }

@@ -9,8 +9,12 @@ const routes: Routes = [
   }
 ];
 
+declare let cordova: any;
+
 @NgModule({
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
-export class Tab3PageRoutingModule {}
+export class Tab3PageRoutingModule {
+  constructor() {}
+}

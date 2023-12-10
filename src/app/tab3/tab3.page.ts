@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { RestService } from 'src/app/api/rest.service';
 
+declare let cordova: any;
+
 @Component({
   selector: 'app-tab3',
   templateUrl: 'tab3.page.html',
@@ -16,8 +18,21 @@ export class Tab3Page {
     private rest: RestService,
   ) {}
 
-  ionViewWillEnter() {
-    this.getAdPopcornInfo();
+  ionViewDidEnter() {
+    this.router.navigateByUrl('/tabs/tab2');
+    document.addEventListener('deviceready', () => {
+      cordova.exec(
+        (result: any) => {
+          console.log('Success:', result);
+        },
+        (error: any) => {
+          console.error('Error:', error);
+        },
+        'testPlugin',
+        'coolMethod',
+        [localStorage.getItem('seq')]
+      );
+    });
   }
 
   adPopcornPressDetail(campaignKey:number) {  

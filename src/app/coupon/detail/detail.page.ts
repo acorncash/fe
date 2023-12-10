@@ -70,37 +70,12 @@ export class DetailPage implements OnInit {
     this.rest.getDotoriByUser(this.userSeq).subscribe((data:any) => {
       this.dotori = data.dotoli;
     });
-    this.getGiftDetail();
   }
 
   IonViewDidEnter() {
     this.rest.getDotoriByUser(this.userSeq).subscribe((data:any) => {
       this.dotori = data.dotoli;
     });
-  }
-
-  getGiftDetail() {
-    // const url = new URL(data.RedirectURL);
-    // const tid = searchParams.get('tid');
-    // this.rest.getAdPopcornInfo().subscribe((data:any) => {
-      // this.adPopcornDetail = data.CampaignInfo.filter((item:any) => item.CampaignKey == this.campaignKey)[0];
-      // this.adPopcornDetailJpg = this.adPopcornDetail.Images[0].URL;
-      
-      // if(data.ResultMsg == "success") {
-        
-      //     if(data.Result == true) {
-            
-      //       // URL 문자열
-      //         const url = new URL(data.RedirectURL);
-      //         const searchParams = new URLSearchParams(url.search);
-      //         const tid = searchParams.get('tid');
-      //         const cid = searchParams.get('cid');
-      //         this.tid = tid;
-      //         this.md5TidCampaignKey = md5TidCampaignKey;
-      //     }
-        
-      // }
-    // });
   }
 
   pay(){

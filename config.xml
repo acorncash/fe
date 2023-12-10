@@ -28,12 +28,12 @@
             <uses-permission android:name="android.permission.INTERNET" />
             <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
             <uses-permission android:name="com.google.android.gms.permission.AD_ID" />
-            <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
-             <meta-data android:name="adpopcorn_app_key" android:value="241494633"/>
-             <meta-data android:name="adpopcorn_hash_key" android:value="ef5e7cf09c954d95"/>
-             <activity android:name="com.igaworks.adpopcorn.activity.ApOfferWallActivity_NT" android:theme="@android:style/Theme.NoTitleBar" android:configChanges="keyboard|keyboardHidden|orientation|screenSize"/>
-             <activity android:name="com.igaworks.adpopcorn.activity.ApVideoAdActivity" android:theme="@android:style/Theme.NoTitleBar"/>
-             <meta-data android:name="adpopcorn_reward_server_type" android:value="client" />
+            <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+            <meta-data android:name="adpopcorn_app_key" android:value="241494633" />
+            <meta-data android:name="adpopcorn_hash_key" android:value="ef5e7cf09c954d95" />
+            <activity android:configChanges="keyboard|keyboardHidden|orientation|screenSize" android:name="com.igaworks.adpopcorn.activity.ApOfferWallActivity_NT" android:theme="@android:style/Theme.NoTitleBar" />
+            <activity android:name="com.igaworks.adpopcorn.activity.ApVideoAdActivity" android:theme="@android:style/Theme.NoTitleBar" />
+            <meta-data android:name="adpopcorn_reward_server_type" android:value="client" />
         </edit-config>
         <edit-config file="app/src/main/AndroidManifest.xml" mode="merge" target="/manifest/application" xmlns:android="http://schemas.android.com/apk/res/android">
             <application android:networkSecurityConfig="@xml/network_security_config" />
@@ -41,7 +41,6 @@
         </edit-config>
         <resource-file src="resources/android/xml/network_security_config.xml" target="app/src/main/res/xml/network_security_config.xml" />
         <resource-file src="resources/android/lib/AdPopcornReward_v8.2.5a.aar" target="libs/AdPopcornReward_v8.2.5a.aar" />
-
         <allow-intent href="market:*" />
         <icon density="ldpi" src="resources/android/icon/drawable-ldpi-icon.png" />
         <icon density="mdpi" src="resources/android/icon/drawable-mdpi-icon.png" />

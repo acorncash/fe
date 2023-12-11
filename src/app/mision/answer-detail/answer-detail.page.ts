@@ -13,6 +13,7 @@ export class AnswerDetailPage implements OnInit {
   mission: any;
   description: string = "";
   dotori:any = "0";
+  location: any;
   constructor(
     private rest: RestService,
     private router: Router,
@@ -21,7 +22,6 @@ export class AnswerDetailPage implements OnInit {
   async ngOnInit() {
     this.seq = this.route.snapshot.params['seq'];
     this.userSeq = localStorage.getItem("seq");
-    console.log(this.seq);
   }
 
   ionViewWillEnter() {
@@ -41,6 +41,13 @@ export class AnswerDetailPage implements OnInit {
     window.open("https://nid.naver.com/nidlogin.login?url=https://msearch.shopping.naver.com/search/all?query="+keyword+"%26maxPrice=" + price + "%26minPrice=" + price + "%26mall=" + mall);
   }
 
+  // openPage(keyword:string, price:string, mall:string){
+  //   const link = "https://nid.naver.com/nidlogin.login?url=https://msearch.shopping.naver.com/search/all?query="+keyword+"%26maxPrice=" + price + "%26minPrice=" + price + "%26mall=" + mall;
+  //   const naverStoreAppUrl = `naverstore://openBrowser?url=${encodeURIComponent(link)}`;
+  //   console.log(naverStoreAppUrl)
+  //   window.open(naverStoreAppUrl, '_system');
+  // }
+  
   submit(){
     Swal.fire({
       text: '정답을 입력하세요',

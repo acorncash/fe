@@ -1,5 +1,5 @@
 import { Component, OnInit, Output } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { RestService } from 'src/app/api/rest.service';
 import Swal from 'sweetalert2';
 
@@ -16,7 +16,10 @@ export class CaptureDetailPage implements OnInit {
 
   constructor(
     private rest: RestService,
-    private route: ActivatedRoute,) { }
+    private router: Router,
+    private route: ActivatedRoute,) { 
+      
+    }
 
   async ngOnInit() {
     this.seq = this.route.snapshot.params['seq'];
@@ -88,6 +91,7 @@ export class CaptureDetailPage implements OnInit {
                   heightAuto: false,
                   confirmButtonText: '닫기',
                 })
+                this.router.navigateByUrl('/tabs/tab2');
               } else {
                 Swal.fire({
                   text: "적립에 실패했습니다",

@@ -6,10 +6,12 @@ import { Component } from '@angular/core';
 })
 export class Tab5Page {
   name:any;
+  email:any;
   constructor(
   ) {}
 
   ngOnInit() {
     this.name = localStorage.getItem("name");
+    this.email = localStorage.getItem("email");
   }
 }

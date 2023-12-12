@@ -32,6 +32,7 @@ export class Tab1Page {
       console.log(data);
       this.userData = data;
       this.dotori = data.dotoli;
+      localStorage.setItem("email", data.userMail)
       console.log(this.userData.recommendCnt);
     });
   }

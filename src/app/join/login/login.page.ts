@@ -85,6 +85,7 @@ export class LoginPage implements OnInit {
       localStorage.setItem('name', data.name);
       localStorage.setItem('seq', data.seq);
       localStorage.setItem('dotori', data.dotori);
+      localStorage.setItem("email", data.userMail)
       // alert(localStorage.getItem("seq"))
       if (localStorage.getItem("seq") && localStorage.getItem("seq") !== 'null')
         resolve()

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { RestService } from 'src/app/api/rest.service';
+import { InAppBrowser, InAppBrowserOptions } from '@ionic-native/in-app-browser/ngx';
 import Swal from 'sweetalert2';
 @Component({
   selector: 'app-answer-detail',
@@ -16,7 +17,8 @@ export class AnswerDetailPage implements OnInit {
   constructor(
     private rest: RestService,
     private router: Router,
-    private route: ActivatedRoute,) { }
+    private route: ActivatedRoute,
+    private inAppBrowser: InAppBrowser) { }
 
   async ngOnInit() {
     this.seq = this.route.snapshot.params['seq'];
@@ -38,7 +40,14 @@ export class AnswerDetailPage implements OnInit {
   }
   
   openPage(keyword:string, price:string, mall:string){
-    window.open("https://nid.naver.com/nidlogin.login?url=https://msearch.shopping.naver.com/search/all?query="+keyword+"%26maxPrice=" + price + "%26minPrice=" + price + "%26mall=" + mall);
+    const options:InAppBrowserOptions = {
+      location: 'yes',
+      zoom: 'no',
+    };
+
+    const url = `http://naverapp.naver.com/inappbrowser/?url=https%3A%2F%%2Fmsearch.shopping.naver.com%2Fsearch%2Fall%3Fquery=${keyword}%26maxPrice=${price}%26minPrice=${price}%26mall=${mall}&target=new&version=6`
+    const browser = this.inAppBrowser.create(url, '_blank', options)
+    // window.open("https://nid.naver.com/nidlogin.login?url=https://msearch.shopping.naver.com/search/all?query="+keyword+"%26maxPrice=" + price + "%26minPrice=" + price + "%26mall=" + mall);
   }
 
   submit(){

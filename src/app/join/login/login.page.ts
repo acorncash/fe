@@ -36,7 +36,7 @@ export class LoginPage implements OnInit {
       zoom: 'no',
     };
 
-    let browser = this.inAppBrowser.create(`https://kauth.kakao.com/oauth/authorize?client_id=${this.KAKAO_REST_API_KEY}&redirect_uri=${this.KAKAO_REDIRECT_URI}&response_type=code&scope=account_email`, '_blank', options);
+    let browser = this.inAppBrowser.create(`https://kauth.kakao.com/oauth/authorize?client_id=${this.KAKAO_REST_API_KEY}&redirect_uri=${this.KAKAO_REDIRECT_URI}&response_type=code`, '_blank', options);
 
     browser.on('loadstop').subscribe(() => {
       browser.executeScript({code: `

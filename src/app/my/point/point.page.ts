@@ -27,7 +27,7 @@ export class PointPage implements OnInit {
 
   getDotoriByUser() {
     this.list = [];
-    this.rest.getDotoriByUser(this.userSeq).subscribe((data:any) => {
+    this.rest.getDotoriByDotoli(this.userSeq).subscribe((data:any) => {
       console.log(data);
       this.list = data;
     });

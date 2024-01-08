@@ -5,6 +5,7 @@ import { map, catchError, tap } from 'rxjs/operators';
 
 const endpoint = 'http://14.7.33.34:8080/api/';
 // const endpoint = 'http://192.168.219.185:8080/api/';
+// const endpoint = 'http://localhost:8080/api/';
 
 const adPopcornMediakey = '241494633';
 
@@ -104,6 +105,11 @@ export class RestService {
 
   getDotoriByUser(userSeq:string) {
     return this.http.get(endpoint + 'user/' + "dotoliByUser/" + userSeq).pipe(
+    map(this.extractData));
+  }
+
+  getDotoriByDotoli(userSeq:string) {
+    return this.http.get(endpoint + 'user/' + "dotoliByDotoli/" + userSeq).pipe(
     map(this.extractData));
   }
 
